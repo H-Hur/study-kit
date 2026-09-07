@@ -1,0 +1,44 @@
+name: A step was missing
+description: The procedure ran out before the work did, and you had to fill the gap yourself.
+title: "Missing step: "
+labels: ["kit-feedback", "missing-step"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the situation **without naming your field.** What is useful here is the shape
+        of the gap, not the subject it opened in. See
+        [CONTRIBUTING.md](https://github.com/H-Hur/study-kit/blob/main/CONTRIBUTING.md).
+  - type: input
+    id: where
+    attributes:
+      label: Which document, and where the gap opened
+      description: File path, and the point in the procedure where it ran out.
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: What the procedure does not say
+      description: What did you need to know that the document did not tell you?
+    validations:
+      required: true
+  - type: textarea
+    id: filled
+    attributes:
+      label: What you did to fill it
+      description: What you actually did, and whether it worked.
+    validations:
+      required: true
+  - type: textarea
+    id: cost
+    attributes:
+      label: What the gap cost you
+      description: Optional. Wasted turns, a rebuilt artifact, a session that ended early.
+  - type: checkboxes
+    id: no-field
+    attributes:
+      label: Before sending
+      options:
+        - label: This report carries no study material and no vocabulary specific to my field.
+          required: true

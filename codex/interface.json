@@ -1,0 +1,17 @@
+{
+  "displayName": "Study Kit",
+  "shortDescription": "Skip what you know. Focus on what you need to learn.",
+  "longDescription": "Quickly get oriented in an adjacent field when you do not have time to work through an entire textbook and all its exercises. Start from what you already know, skip familiar material, and focus on your target capability. Verify sources, build a focused plan and textbook, and revise it from your questions. Includes 14 skills. Local PDF publishing requires a compatible browser and Poppler, or a suitable host PDF tool.",
+  "developerName": "Hyeonoh Hur",
+  "category": "Productivity",
+  "capabilities": [
+    "Read",
+    "Write"
+  ],
+  "websiteURL": "https://github.com/H-Hur/study-kit",
+  "defaultPrompt": [
+    "Help me start a course of study by asking about my background and goals.",
+    "Prepare my next study session from the curriculum and remaining questions.",
+    "Revise my textbook from the pending changes and prepare both PDF editions."
+  ]
+}

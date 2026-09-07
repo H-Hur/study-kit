@@ -1,0 +1,56 @@
+name: How you measured your own learning
+description: You decided you needed a way to check yourself, and built one. Send the method.
+title: "Self-measurement: "
+labels: ["kit-feedback", "self-measurement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The kit has no retention or assessment mechanism on purpose — measuring the effect of
+        study is what a teacher needs, and this kit is used by someone studying alone. But you
+        are an expert in your own field, and if you built a way to check yourself, **the method
+        is what we want. Not your results, and not your scores.** This is the one route by
+        which measurement can enter the kit at all.
+  - type: textarea
+    id: question
+    attributes:
+      label: What you wanted to find out
+      description: What were you unsure of that made a check worth building?
+    validations:
+      required: true
+  - type: textarea
+    id: method
+    attributes:
+      label: The method
+      description: What you did, when, and how often. Enough that someone else could run it.
+    validations:
+      required: true
+  - type: input
+    id: cost
+    attributes:
+      label: What it cost to run
+      description: Optional. Minutes, turns, tokens — whatever you can say.
+  - type: textarea
+    id: told-you
+    attributes:
+      label: What it told you that you could not tell otherwise
+      description: The point of the method, not its output.
+    validations:
+      required: true
+  - type: dropdown
+    id: keep
+    attributes:
+      label: Would you keep using it
+      options:
+        - "Yes, unchanged"
+        - "Yes, but I would change it"
+        - "No — it cost more than it told me"
+    validations:
+      required: true
+  - type: checkboxes
+    id: no-field
+    attributes:
+      label: Before sending
+      options:
+        - label: This report carries no study material and no vocabulary specific to my field.
+          required: true

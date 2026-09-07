@@ -1,0 +1,18 @@
+Study Kit licensing — version 2.0.0 onward
+
+Copyright (c) 2026 Hyeonoh Hur
+
+Code: PolyForm Noncommercial License 1.0.0.
+Documents and prompts: Creative Commons Attribution-NonCommercial-ShareAlike
+4.0 International (CC BY-NC-SA 4.0).
+
+These licenses apply to different components, not as a choice of licenses.
+The scope, attribution, commercial-permission process, and treatment of earlier
+MIT releases are specified in plugins/study-kit/LICENSE. That notice also governs
+the repository's own code, configuration, documentation, and prompts.
+
+Full license texts:
+- plugins/study-kit/licenses/PolyForm-Noncommercial-1.0.0.txt
+- plugins/study-kit/licenses/CC-BY-NC-SA-4.0.txt
+
+Both installable packages include that scope notice and both complete license texts.

@@ -1,0 +1,17 @@
+{
+  "name": "study-kit",
+  "owner": {
+    "name": "Hyeonoh Hur"
+  },
+  "metadata": {
+    "description": "Marketplace for study-kit — an agent and skill bundle that helps an expert come up to working speed in an adjacent field",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "study-kit",
+      "source": "./plugins/study-kit",
+      "description": "A bundle of procedures for building a textbook and a course of study for one particular person: learner intake, a graded source index, curriculum design, textbook authoring, a revision loop driven by the learner's questions, and publication. The subject is not built in — the kit asks the learner what to teach."
+    }
+  ]
+}

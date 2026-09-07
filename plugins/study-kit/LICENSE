@@ -1,0 +1,46 @@
+Study Kit licensing — version 2.0.0 onward
+
+Required Notice: Copyright (c) 2026 Hyeonoh Hur (https://github.com/H-Hur/study-kit)
+
+This distribution uses different licenses for different material. They are not
+alternative licenses from which a recipient may choose.
+
+Code: PolyForm Noncommercial License 1.0.0
+  Software, build scripts, tests, configuration, and the HTML markup, CSS, and
+  JavaScript in templates are covered by licenses/PolyForm-Noncommercial-1.0.0.txt.
+  Executable code examples embedded in documentation are covered by that license
+  too; the surrounding explanatory prose is covered by the content license below.
+
+Documents and prompts: CC BY-NC-SA 4.0
+  Documentation, skill instructions, command prompts, agent instructions, and
+  prose in templates are covered by licenses/CC-BY-NC-SA-4.0.txt. This includes the
+  corresponding generated Codex documents and prompts. Attribution: Study Kit,
+  Hyeonoh Hur, https://github.com/H-Hur/study-kit. Retain attribution and license
+  notices, indicate modifications, and share adaptations under the same license
+  or another license permitted by its ShareAlike terms.
+
+Noncommercial use, modification, and redistribution are permitted subject to the
+applicable license. Commercial use outside those grants requires separate prior
+permission from Hyeonoh Hur. This includes using or adapting protected kit material
+for a commercial hosted service, subscription product, or paid learning offering
+when that use is not otherwise permitted by the applicable license. Contact the
+maintainer through https://github.com/H-Hur/study-kit/issues to request permission;
+a request is not permission.
+
+The full license texts control. In particular, PolyForm expressly permits certain
+uses by educational, charitable, and other listed organizations regardless of
+funding. This summary does not remove those permissions or statutory exceptions,
+and does not modify either license. Source availability does not make this an
+OSI-approved open-source distribution.
+
+Earlier releases through 1.3.0 were distributed under MIT. This change does not
+revoke rights already granted under MIT for previously published material, including
+that material when it is reused in a later release. New or modified material in
+this release is offered under the applicable terms above to the extent the
+maintainer holds the necessary rights. Third-party material retains its own terms;
+license texts themselves retain their publishers' terms.
+
+Using the kit does not automatically license a learner's independent material or
+all generated output under these licenses. Any protected kit text or code copied
+into an output remains subject to its applicable license. These licenses do not
+claim ownership of learning methods, ideas, facts, or independently authored work.

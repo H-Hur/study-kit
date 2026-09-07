@@ -1,0 +1,19 @@
+name: Validate packages
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  codex-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify runtime packaging regressions
+        run: python3 -m unittest discover -s tests -v
+      - name: Verify generated Codex package and build archive
+        run: python3 scripts/build_codex.py --check --archive

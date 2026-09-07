@@ -1,0 +1,20 @@
+{
+  "name": "study-kit",
+  "interface": {
+    "displayName": "Study Kit"
+  },
+  "plugins": [
+    {
+      "name": "study-kit-codex",
+      "source": {
+        "source": "local",
+        "path": "./plugins/study-kit-codex"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

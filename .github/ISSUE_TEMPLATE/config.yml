@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: How the kit is meant to work
+    url: https://github.com/H-Hur/study-kit/blob/main/plugins/study-kit/docs/method.md
+    about: The six stages in full. Worth reading before reporting a missing step — it may already be here.
+  - name: What a piece of work costs
+    url: https://github.com/H-Hur/study-kit/blob/main/plugins/study-kit/docs/budget.md
+    about: Measured sizes, and the rules for deciding whether to start now, split, or schedule.
+  - name: Before you write
+    url: https://github.com/H-Hur/study-kit/blob/main/CONTRIBUTING.md
+    about: What to send, what not to send, and why the forms ask you to leave your field out.

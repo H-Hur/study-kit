@@ -1,0 +1,55 @@
+name: A clause did not hold
+description: You did what a document said, and what it said would happen did not happen.
+title: "Clause did not hold: "
+labels: ["kit-feedback", "clause-did-not-hold"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the situation **without naming your field.** The kit contains no field of
+        study, and it has to stay that way — what is useful here is the shape of what
+        happened, not the subject it happened in. See
+        [CONTRIBUTING.md](https://github.com/H-Hur/study-kit/blob/main/CONTRIBUTING.md).
+  - type: input
+    id: where
+    attributes:
+      label: Which document, and which clause
+      description: File path, and the sentence you were following.
+      placeholder: "plugins/study-kit/skills/source-index/SKILL.md — \"mechanical conversion costs almost no tokens\""
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What the clause says will happen
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened
+      description: The shape of it. No field vocabulary, no study material.
+    validations:
+      required: true
+  - type: textarea
+    id: workaround
+    attributes:
+      label: What you did instead
+      description: Optional. If you filled the gap yourself, how?
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often did you hit this
+      options:
+        - Once
+        - More than once
+        - Every time
+    validations:
+      required: true
+  - type: checkboxes
+    id: no-field
+    attributes:
+      label: Before sending
+      options:
+        - label: This report carries no study material and no vocabulary specific to my field.
+          required: true

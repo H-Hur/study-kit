@@ -1,0 +1,45 @@
+name: A trap with no warning
+description: You found it by stepping on it, and no document warns about it.
+title: "Unwarned trap: "
+labels: ["kit-feedback", "unwarned-trap"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The kit's clauses are earned by *"we did it this way and it broke here."* A trap you
+        actually hit is the most valuable thing you can send. Describe it **without naming
+        your field.** See
+        [CONTRIBUTING.md](https://github.com/H-Hur/study-kit/blob/main/CONTRIBUTING.md).
+  - type: textarea
+    id: trap
+    attributes:
+      label: What went wrong
+      description: The symptom first — what you saw.
+    validations:
+      required: true
+  - type: textarea
+    id: cause
+    attributes:
+      label: What caused it
+      description: If you found the cause. If you did not, say so — that is still worth having.
+    validations:
+      required: true
+  - type: textarea
+    id: how-caught
+    attributes:
+      label: How you caught it
+      description: Especially important if it failed silently. What made you notice?
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Which document should carry the warning
+      description: Optional. Where would you have wanted to read about it?
+  - type: checkboxes
+    id: no-field
+    attributes:
+      label: Before sending
+      options:
+        - label: This report carries no study material and no vocabulary specific to my field.
+          required: true

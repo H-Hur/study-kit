@@ -1,0 +1,447 @@
+<!--
+  Markup, CSS, JavaScript: PolyForm-Noncommercial-1.0.0.
+  Template prose: CC-BY-NC-SA-4.0. See the package LICENSE.
+  Required Notice: Copyright (c) 2026 Hyeonoh Hur (https://github.com/H-Hur/study-kit)
+
+  Textbook template — study-kit / textbook-authoring
+  ─────────────────────────────────────────────
+  This file is an "empty textbook." Fill the {{ }} slots with values drawn from the learner
+  profile and the topic map, and duplicate the chapter sections to match the number of
+  sessions in the curriculum. It is tied to no field of study.
+
+  The parts and what they are for
+  - header.mast          Title, subtitle, edition label. Always keep the edition label.
+  - section.weeks        The study map. Give the week in progress class="week now".
+  - section.chapter      One chapter = one session. Each chapter starts a new page in print.
+  - aside.basics         The "groundwork" box. The central device of the dual-audience
+                         convention — fundamentals the learner already knows are pulled out
+                         of the body and isolated here.
+  - figure               A figure. With controls (sliders) it becomes an interactive figure;
+                         in print the controls are hidden and it becomes a still frame at
+                         its default state.
+  - .eqbox               The equation box. No derivations — the result and the symbols only.
+  - .keybox              "The three key sentences of this chapter." Exactly one per chapter.
+  - details/summary/.ans Review questions. Answers go in .ans —
+                         printed collapsed it carries only the questions, printed expanded it
+                         carries the answers too (the principle behind the two editions,
+                         exercise and answer. See the textbook-publish skill).
+  - .shelf/.book         The shelf of sources. Carried over from the source index.
+  - table.gloss          The glossary. The original term and the meaning, for terms appearing
+                         for the first time.
+
+  Never break these
+  - The body is written as continuous prose, not as lists of words.
+  - Do not presume the learner as an individual or the internals of a project (self-standing
+    prose).
+  - Do not delete the edition label or the revision notice in the footer.
+-->
+<title>{{textbook title}}</title>
+<style>
+  :root {
+    --ground: #F7F5F0;
+    --surface: #FFFFFF;
+    --ink: #1B2433;
+    --muted: #5A6472;
+    --line: #E3DFD3;
+    --accent: #A9741A;
+    --accent-soft: rgba(169, 116, 26, 0.14);
+    --accent-2: #2E7E92;
+    --accent-2-soft: rgba(46, 126, 146, 0.16);
+    --code-bg: #F0EDE5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0D131E;
+      --surface: #151D2B;
+      --ink: #E9E6DC;
+      --muted: #8E97A6;
+      --line: #263248;
+      --accent: #E0A83E;
+      --accent-soft: rgba(224, 168, 62, 0.16);
+      --accent-2: #57B0C4;
+      --accent-2-soft: rgba(87, 176, 196, 0.18);
+      --code-bg: #1B2534;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0D131E;
+    --surface: #151D2B;
+    --ink: #E9E6DC;
+    --muted: #8E97A6;
+    --line: #263248;
+    --accent: #E0A83E;
+    --accent-soft: rgba(224, 168, 62, 0.16);
+    --accent-2: #57B0C4;
+    --accent-2-soft: rgba(87, 176, 196, 0.18);
+    --code-bg: #1B2534;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    line-height: 1.9;
+    margin: 0;
+    padding: 0 20px 80px;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 41rem; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 7vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin: 8px 0 6px;
+    text-wrap: balance;
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  h3 {
+    font-size: 17.5px;
+    font-weight: 700;
+    margin: 36px 0 10px;
+  }
+  p { margin: 0 0 18px; }
+  .num { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums; }
+
+  /* ── masthead ─────────────────────────── */
+  header { padding: 44px 0 28px; border-bottom: 1px solid var(--line); }
+  .mast { display: flex; align-items: center; gap: 18px; }
+  .mast-mark { flex: none; width: 76px; height: 76px; }
+  .mast-mark .ring { animation: spin 28s linear infinite; transform-origin: 38px 38px; }
+  .mast-mark .ring2 { animation: spin 44s linear infinite reverse; transform-origin: 38px 38px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .mast-mark .ring, .mast-mark .ring2 { animation: none; }
+  }
+  .mast-meta {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+    color: var(--muted); font-size: 13.5px; margin-top: 6px;
+  }
+  .pill {
+    display: inline-block; padding: 1px 10px; border-radius: 99px;
+    background: var(--accent-soft); color: var(--accent);
+    font-weight: 700; font-size: 12.5px;
+  }
+  .howto { color: var(--muted); font-size: 14px; margin: 14px 0 0; }
+
+  /* ── study map ─────────────────────────── */
+  section { padding: 40px 0; border-bottom: 1px solid var(--line); }
+  .weeks { display: grid; gap: 10px; margin-top: 4px; }
+  .week {
+    display: grid; grid-template-columns: 64px 1fr; gap: 12px;
+    padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px;
+    background: var(--surface);
+  }
+  .week .wk { font-weight: 800; font-size: 14px; color: var(--accent-2); padding-top: 1px; }
+  .week .tt { font-weight: 700; font-size: 14.5px; }
+  .week .ss { color: var(--muted); font-size: 13px; line-height: 1.7; }
+  .week .ss a { color: var(--muted); text-decoration: underline dotted; text-underline-offset: 3px; }
+  .week .ss a:hover, .week .ss a:focus-visible { color: var(--accent); }
+  .week.now { border-color: var(--accent); }
+  .week.now .wk { color: var(--accent); }
+  .tag-now {
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 4px; padding: 0 5px; margin-left: 6px;
+    white-space: nowrap;
+  }
+
+  /* ── body typesetting ──────────────────── */
+  .ch-head { margin-bottom: 22px; }
+  .ch-no {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px; color: var(--muted); letter-spacing: 0.1em;
+  }
+  figure {
+    margin: 26px 0; padding: 18px 16px 14px;
+    border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
+  }
+  figure svg { width: 100%; height: auto; display: block; }
+  figcaption { font-size: 13px; color: var(--muted); line-height: 1.7; margin-top: 10px; }
+  .fig-scroll { overflow-x: auto; }
+
+  .controls { display: grid; gap: 10px; margin: 6px 0 14px; }
+  .ctl { display: grid; grid-template-columns: 7.5em 1fr 5.5em; align-items: center; gap: 12px; font-size: 14px; }
+  .ctl label { font-weight: 700; }
+  .ctl output { text-align: right; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums; font-size: 14px; }
+  input[type="range"] { width: 100%; accent-color: var(--accent); }
+  input[type="range"]:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; border-radius: 4px; }
+
+  .readouts { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 12px; }
+  .readout .k { font-size: 12px; color: var(--muted); }
+  .readout .v { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums; font-size: 21px; font-weight: 600; }
+  .readout .v small { font-size: 13px; color: var(--muted); font-weight: 400; }
+
+  .keybox {
+    border-left: 3px solid var(--accent); background: var(--accent-soft);
+    border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 28px 0;
+  }
+  .keybox .kb-t { font-weight: 800; font-size: 13.5px; color: var(--accent); margin-bottom: 6px; }
+  .keybox p { margin: 0 0 8px; font-size: 15px; }
+  .keybox p:last-child { margin-bottom: 0; }
+
+  details {
+    border: 1px solid var(--line); border-radius: 10px; background: var(--surface);
+    padding: 0; margin: 10px 0;
+  }
+  summary {
+    cursor: pointer; padding: 13px 16px; font-weight: 700; font-size: 15px;
+    list-style: none; display: flex; gap: 10px; align-items: baseline;
+  }
+  summary::before { content: "▸"; color: var(--accent); font-size: 13px; transition: transform .15s; }
+  details[open] summary::before { transform: rotate(90deg); }
+  summary:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; border-radius: 10px; }
+  .ans { padding: 0 16px 14px 34px; color: var(--muted); font-size: 14.5px; }
+  .ans b { color: var(--ink); }
+
+  /* ── shelf of sources ──────────────────── */
+  .shelf { display: grid; gap: 12px; }
+  .book {
+    border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
+    padding: 16px 18px;
+  }
+  .book .b-top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .book .b-title { font-weight: 800; font-size: 15px; }
+  .book .b-when {
+    font-size: 11px; font-weight: 700; color: var(--accent-2);
+    border: 1px solid var(--accent-2); border-radius: 4px; padding: 0 6px; white-space: nowrap;
+  }
+  .book .b-cite { font-size: 12.5px; color: var(--muted); font-family: ui-monospace, "SF Mono", Menlo, monospace; margin: 2px 0 8px; }
+  .book p { font-size: 14px; margin: 0; color: var(--ink); }
+
+  /* ── equation block ────────────────────── */
+  .eqbox {
+    background: var(--code-bg); border-radius: 10px;
+    padding: 14px 18px; margin: 20px 0;
+    font-size: 15.5px; line-height: 2.15; overflow-x: auto; white-space: nowrap;
+  }
+  .eqbox i { font-family: Georgia, "Times New Roman", serif; }
+  .eqbox .eq-note { color: var(--muted); font-size: 13px; font-style: normal; }
+
+  /* ── groundwork box (fundamentals) ─────── */
+  .basics {
+    border-left: 3px solid var(--accent-2); background: var(--accent-2-soft);
+    border-radius: 0 10px 10px 0; padding: 13px 17px; margin: 22px 0;
+    font-size: 14.5px;
+  }
+  .basics .bs-t { font-weight: 800; font-size: 13px; color: var(--accent-2); margin-bottom: 6px; }
+  .basics p { margin: 0 0 8px; }
+  .basics p:last-child { margin-bottom: 0; }
+
+  /* ── glossary ──────────────────────────── */
+  .gloss { width: 100%; border-collapse: collapse; font-size: 13.5px; line-height: 1.7; }
+  .gloss th, .gloss td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .gloss th { font-size: 12px; color: var(--muted); font-weight: 700; }
+  .gloss td:first-child { white-space: nowrap; font-weight: 700; }
+
+  footer { padding-top: 34px; color: var(--muted); font-size: 13.5px; }
+  footer b { color: var(--ink); }
+
+  /* ── print (PDF) ───────────────────────── */
+  @media print {
+    .chapter { break-before: page; page-break-before: always; }
+    .controls { display: none; }
+    .basics { break-inside: avoid; }
+    body { padding-bottom: 20px; }
+    details { break-inside: avoid; }
+    figure { break-inside: avoid; }
+  }
+</style>
+
+<main>
+<header>
+  <div class="mast">
+    <svg class="mast-mark" viewBox="0 0 76 76" role="img" aria-label="decorative mark">
+      <circle cx="38" cy="38" r="9" fill="var(--accent)"/>
+      <g class="ring"><ellipse cx="38" cy="38" rx="34" ry="14" fill="none" stroke="var(--accent-2)" stroke-width="1.4"/></g>
+      <g class="ring2"><ellipse cx="38" cy="38" rx="14" ry="34" fill="none" stroke="var(--accent-2)" stroke-width="1.4" opacity="0.6"/></g>
+    </svg>
+    <div>
+      <div class="eyebrow">{{field}}</div>
+      <h1>{{textbook title}}</h1>
+      <div class="mast-meta">
+        <span class="pill">{{edition label, e.g. 1st edition}}</span>
+        <span>{{N}} sessions · {{total time}}</span>
+        <span>{{date published}}</span>
+      </div>
+      <p class="howto">{{Two or three sentences on how to read this book. Which chapters to read as preview, and how to use the review questions.}}</p>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════ study map ══════════════ -->
+<section>
+  <h2>Study map</h2>
+  <p>{{The whole journey in one paragraph. Why this order — give the grounds, in the form of why a later topic holds only on top of an earlier one.}}</p>
+  <div class="weeks">
+    <div class="week now">
+      <div class="wk">{{week 1}}<span class="tag-now">now</span></div>
+      <div>
+        <div class="tt">{{week title — what becomes doable when this week ends}}</div>
+        <div class="ss">{{the chapters in this week}}</div>
+      </div>
+    </div>
+    <div class="week">
+      <div class="wk">{{week 2}}</div>
+      <div>
+        <div class="tt">{{week title}}</div>
+        <div class="ss">{{list of chapters}}</div>
+      </div>
+    </div>
+    <!-- duplicate for each week -->
+  </div>
+</section>
+
+<!-- ══════════════ chapter 0 — preparations ══════════════
+     The first device of the dual-audience convention. It gathers the minimum fundamentals a
+     first-time reader needs in order to read the body, even though the learner already knows
+     them. Say to the learner explicitly that this chapter may be skipped.
+-->
+<section class="chapter" id="ch0">
+  <div class="ch-head">
+    <div class="ch-no">CH.0 — Preparations</div>
+    <h2>{{the minimum for reading this book}}</h2>
+  </div>
+  <p>{{A paragraph stating the character of this chapter. Put the note that readers who already know this may skip it here.}}</p>
+
+  <h3>0.1 — {{section title}}</h3>
+  <p>{{prose}}</p>
+
+  <h3>0.{{n}} — Glossary</h3>
+  <table class="gloss">
+    <tr><th>Term</th><th>Original</th><th>Meaning</th></tr>
+    <tr><td>{{term}}</td><td>{{original}}</td><td>{{meaning — one line}}</td></tr>
+  </table>
+
+  <div class="keybox">
+    <div class="kb-t">The three key sentences of this chapter</div>
+    <p>① {{as a complete sentence}}</p>
+    <p>② {{as a complete sentence}}</p>
+    <p>③ {{as a complete sentence}}</p>
+  </div>
+</section>
+
+<!-- ══════════════ body chapter (one per session) ══════════════ -->
+<section class="chapter" id="ch1">
+  <div class="ch-head">
+    <div class="ch-no">CH.1 — Session 1</div>
+    <h2>{{chapter title}}</h2>
+  </div>
+
+  <p>{{Opening paragraph — why this chapter's question became necessary now. Join it to the previous chapter in prose.}}</p>
+
+  <h3>1.1 — {{write section titles as assertions}}</h3>
+  <p>{{Prose. Why the concept became necessary, how it joins what came before, and what it leads to next.}}</p>
+
+  <aside class="basics">
+    <div class="bs-t">Groundwork — {{the fundamental topic to isolate}}</div>
+    <p>{{Fundamentals familiar to the learner but needed by a general reader. Kept here so the flow of the body is not broken.}}</p>
+  </aside>
+
+  <h3>1.2 — {{section title}}</h3>
+  <p>{{prose}}</p>
+
+  <figure>
+    <!-- Interactive figure: the controls are for screen only and are hidden in print.
+         So the SVG must be a still frame whose meaning carries from its initial state alone. -->
+    <div class="controls">
+      <div class="ctl">
+        <label for="p1">{{variable}}</label>
+        <input type="range" id="p1" min="0" max="100" step="1" value="50">
+        <output id="p1Out" for="p1">50</output>
+      </div>
+    </div>
+    <div class="fig-scroll">
+      <svg id="fig1" viewBox="0 0 640 340" role="img" aria-label="{{what the figure shows — description for screen readers}}">
+        <!-- Shapes use only the var(--accent) / var(--accent-2) / var(--muted) tokens.
+             Hard-coded colors disappear in the dark theme. -->
+      </svg>
+    </div>
+    <div class="readouts">
+      <div class="readout"><div class="k">{{name of the value read out}}</div><div class="v" id="r1">—<small>{{unit}}</small></div></div>
+    </div>
+    <figcaption>{{Figure caption — what to look at, and what moves when the handle is moved.}}</figcaption>
+  </figure>
+
+  <div class="eqbox">
+    {{the result equation, one line}} <span class="eq-note">— {{what this equation says}}</span>
+  </div>
+  <p>{{Unpack the symbols of the equation in prose. No derivation.}}</p>
+
+  <div class="keybox">
+    <div class="kb-t">The three key sentences of this chapter</div>
+    <p>① {{as a complete sentence — do not end on a noun phrase}}</p>
+    <p>② {{as a complete sentence}}</p>
+    <p>③ {{as a complete sentence}}</p>
+  </div>
+
+  <h3>Review</h3>
+  <details>
+    <summary>{{question 1 — one that demands a calculation or a judgment}}</summary>
+    <div class="ans">{{The answer. Set any number in <b>bold</b>. A sentence or two on why.}}</div>
+  </details>
+  <details>
+    <summary>{{question 2 — one that asks about the trade}}</summary>
+    <div class="ans">{{answer}}</div>
+  </details>
+  <details>
+    <summary>{{question 3 — one that asks for a practical judgment}}</summary>
+    <div class="ans">{{answer}}</div>
+  </details>
+</section>
+
+<!-- ══════════════ shelf of sources ══════════════ -->
+<section>
+  <h2>Shelf of sources</h2>
+  <p>{{The key sources carried over from the index. Do not demand close reading; state "for what, and when, is this opened."}}</p>
+  <div class="shelf">
+    <div class="book">
+      <div class="b-top"><span class="b-title">{{the question this source answers}}</span><span class="b-when">{{when to open it}}</span></div>
+      <div class="b-cite">{{author (year) · source}}</div>
+      <p>{{The role this source plays in this course of study. Write its use, not a summary.}}</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><b>Revision notice</b> — {{What this edition covers, and when and how the next one arrives. State where to leave a question.}}</p>
+</footer>
+</main>
+
+<script>
+/* Interactive figure — the minimal pattern
+   ────────────────────────────────────────
+   1) read the input, 2) compute the geometry, 3) update the SVG attributes and the readouts.
+   4) always call draw() once at the end to establish the initial state —
+      that initial state is the still frame carried into the printed PDF.   */
+(function () {
+  var p1 = document.getElementById('p1');
+  if (!p1) return;
+  var out = document.getElementById('p1Out');
+  var r1  = document.getElementById('r1');
+
+  function draw() {
+    var v = Number(p1.value);
+    out.textContent = v;
+    /* {{update the shapes}} */
+    r1.innerHTML = v.toFixed(1) + '<small>{{unit}}</small>';
+  }
+  p1.addEventListener('input', draw);
+  draw();
+})();
+</script>
