@@ -50,9 +50,23 @@ the plugin.
 Both editions ship from **this repository and the same release version**. Choose the
 commands for your host; the learning procedures and templates come from one source.
 
+Choose a route: **desktop menus**, **ask in a local chat**, or **download files**.
+Study Kit is distributed through this repository's marketplace; a public catalog
+search alone does not register it. Downloading or attaching files alone also does
+not register a plugin. See the [desktop installation guide](docs/desktop-install.md)
+for complete steps and troubleshooting.
+
 ### Claude Code
 
-```bash
+In the desktop app, use the **Code** tab with a **Local** session. Open
+**+ → Plugins → Add plugin**, select the `study-kit` marketplace, and install
+`study-kit`. If that marketplace is missing, register it first using the terminal
+commands in the [desktop guide](docs/desktop-install.md#claude-code-desktop).
+Claude's Chat and Cowork tabs use a separate installation surface.
+
+In the interactive Claude Code CLI, these are slash commands:
+
+```text
 /plugin marketplace add H-Hur/study-kit
 /plugin install study-kit@study-kit
 ```
@@ -63,6 +77,22 @@ Its model recommendation is Opus at high reasoning; see the
 [Claude Code runtime notes](plugins/study-kit/docs/runtime.md).
 
 ### Codex
+
+In the desktop app, open **Plugins**, choose the Study Kit marketplace, and install
+**Study Kit** (`study-kit-codex`). If it is missing, register the repository with
+the first command below, restart the app, and return to Plugins. The second
+command installs it directly when using the CLI instead of the menu.
+
+To ask for help from a **local Codex task**, paste:
+
+> Install the Codex edition of Study Kit from https://github.com/H-Hur/study-kit.
+> Check whether the Codex plugin CLI is available, register the marketplace, and
+> install study-kit-codex@study-kit. Preserve my other installed plugins and
+> settings. Verify installation and tell me how to start it in a new task.
+
+This asks the agent to perform setup using available tools; it is not a built-in
+chat installation command. If the CLI is unavailable, use the
+[downloaded-folder route](docs/desktop-install.md#download-and-install-files).
 
 Run these in a terminal with a Codex CLI that supports `codex plugin`:
 

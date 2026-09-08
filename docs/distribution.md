@@ -15,6 +15,12 @@ name is Study Kit. No second repository or independently maintained release is n
 
 ## Install and update
 
+For desktop menus, agent-assisted chat requests, downloaded repository installs,
+and the distinction between Claude Code and Cowork, use the
+[desktop installation guide](desktop-install.md). Desktop guidance was checked
+against official host documentation on 2026-09-08. The commands below remain the
+CLI route.
+
 The GitHub commands below become available after the commit containing the Codex
 marketplace and generated package is published to the repository's default branch.
 
