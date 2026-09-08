@@ -1,7 +1,13 @@
 # Install Study Kit in desktop apps
 
-Checked against official documentation on 2026-09-08. These steps cover local
-Codex tasks and Claude Code desktop sessions. Menu labels can vary by app version.
+Tested on 2026-09-08 with Codex CLI 0.153.4, Claude Code CLI 2.1.260, and
+Claude desktop 1.46388.3. These steps cover local sessions. Menu labels vary.
+
+**Use the tested CLI-assisted route for now.** GitHub and extracted-folder
+installation succeeded in both hosts. Claude's installed skill ran in a new
+Code desktop session; Codex's installed skill ran in a fresh CLI session.
+Codex desktop menu installation and an entirely CLI-free installation remain
+unverified. See the [test record](desktop-install-test.md) for exact coverage.
 The learning project belongs in a separate folder from the downloaded kit.
 
 | Host | Marketplace | Plugin to install | Start in a new conversation |
@@ -11,7 +17,7 @@ The learning project belongs in a separate folder from the downloaded kit.
 
 ## Codex desktop
 
-### Desktop menus
+### Desktop menus (documentation-based; not yet tested)
 
 1. Open **Plugins** and look for the Study Kit marketplace/source. It is a repo
    marketplace, separate from the public plugin catalog.
@@ -32,7 +38,7 @@ A CLI install is also supported when `codex plugin add --help` is available:
 codex plugin add study-kit-codex@study-kit
 ```
 
-### Ask in chat
+### Ask in chat (installation request not yet tested end to end)
 
 In a local Codex task that can run commands, paste:
 
@@ -50,27 +56,32 @@ built-in chat commands.
 
 ## Claude Code desktop
 
-### Desktop menus
+### Verified CLI-assisted desktop route
 
-1. Open Claude desktop's **Code** tab and choose a **Local** session.
-2. Open **+ → Plugins → Add plugin**. This lists configured marketplaces.
-3. If `study-kit` is absent, register it in a terminal with the Claude Code CLI:
+1. In a terminal, register and install the plugin:
 
    ```bash
    claude plugin marketplace add H-Hur/study-kit
+   claude plugin install study-kit@study-kit --scope user
    ```
 
-4. Reopen the plugin browser (restart the app if necessary), select `study-kit`
-   from the `study-kit` marketplace, and install for your user account to use it
-   across study projects.
-5. Start a new local session in a separate study folder and run
-   `/study-kit:study-start`.
+2. If already installed, refresh and update instead:
 
-To install from the terminal instead of the menu:
+   ```bash
+   claude plugin marketplace update study-kit
+   claude plugin update study-kit@study-kit
+   ```
 
-```bash
-claude plugin install study-kit@study-kit --scope user
-```
+3. Open the desktop **Code** tab, choose **Local**, and select a separate study
+   folder. Start a new session and ask it to invoke `study-kit:study-start`.
+   This successfully loaded version 2.0.0 and asked the first two intake questions
+   in the desktop test, even though a separate CLI inference attempt had an
+   expired OAuth session.
+4. Open **+ → Plugins** to inspect the installed plugin. In the tested Korean UI,
+   **플러그인 탐색** (Browse plugins) opened **사용자 지정** (Customize), whose
+   **플러그인 추가** menu offered marketplace addition and plugin upload.
+   We inspected these controls but did not complete a new installation through
+   them. Do not treat menu visibility as a successful local plugin installation.
 
 The README's `/plugin marketplace add` and `/plugin install` examples are
 interactive Claude Code CLI commands. Use the `claude plugin ...` shell forms
@@ -78,7 +89,7 @@ above in a terminal; do not assume the desktop composer supports every CLI slash
 command. The documented desktop plugin browser also supports SSH sessions;
 cloud and WSL sessions have different limitations and are outside this guide.
 
-### Ask in chat
+### Ask in chat (installation request not yet tested end to end)
 
 In a local **Code** session, paste:
 
@@ -109,13 +120,13 @@ codex plugin marketplace add "/absolute/path/to/study-kit-main"
 codex plugin add study-kit-codex@study-kit
 ```
 
-Without the CLI, add/open the extracted repository as a local Codex project. It
+**CLI-free alternative — documented, not tested here:** add/open the extracted repository as a local Codex project. It
 already contains `.agents/plugins/marketplace.json` pointing to the generated
 Codex package. Restart the app, open that project, then use **Plugins** to select
 its Study Kit marketplace and install. After installation, start a new task in
 an independent study folder.
 
-If you have only the Codex plugin package ZIP, extract it and ask the built-in
+**Plugin-only ZIP alternative — not tested here:** if you have only the Codex plugin package ZIP, extract it and ask the built-in
 `plugin-creator` skill to register the existing plugin folder in a personal
 marketplace, preserving existing entries. Restart the app and install from that
 source. The repository ZIP is simpler because its marketplace is already included.
@@ -135,7 +146,7 @@ Return to the desktop **Code** tab, start a new local session, and check that
 cannot run; the official Code desktop guide does not establish a ZIP-upload
 installer for its local plugin browser.
 
-### Claude Chat and Cowork are separate
+### Claude Chat and Cowork installation is outside the tested route
 
 Cowork documents **Customize → Plugins**, adding a Git repository marketplace,
 and uploading a plugin package. That account-level surface is separate from the
@@ -154,6 +165,12 @@ has been validated in Chat or Cowork.
 - If `study-kit` was already registered, inspect the existing source before
   switching between a downloaded folder and GitHub. Use
   `codex plugin marketplace list` or `claude plugin marketplace list`.
+  Codex rejects a different source under the same name with
+  `marketplace 'study-kit' is already added from a different source`.
+  To intentionally switch this one marketplace, run
+  `codex plugin marketplace remove study-kit`, add the desired GitHub or local
+  source, and rerun `codex plugin add study-kit-codex@study-kit`. This replaces
+  source registration; keep other marketplaces untouched.
 - Downloaded folders do not track GitHub updates. Replace/update the source and
   refresh/reinstall through the host. Keep the folder available for future
   refreshes. See [distribution](distribution.md#install-and-update) for Codex
@@ -172,6 +189,7 @@ has been validated in Chat or Cowork.
 - [Anthropic: Cowork plugins](https://claude.com/docs/cowork/guide/plugins):
   the separate repository and file-upload installation surface.
 
-The package paths and CLI command syntax were checked locally. Menu procedures
-are based on the official documentation; this documentation update does not
-represent a fresh end-to-end installation test in both desktop apps.
+The [test record](desktop-install-test.md) separates installation success,
+actual skill execution, inspected UI controls, and blocked or untested paths.
+A CLI success is not evidence that the desktop menu installer works. An intake
+smoke test is not validation of a complete course or textbook publishing workflow.

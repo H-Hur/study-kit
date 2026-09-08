@@ -54,15 +54,18 @@ Choose a route: **desktop menus**, **ask in a local chat**, or **download files*
 Study Kit is distributed through this repository's marketplace; a public catalog
 search alone does not register it. Downloading or attaching files alone also does
 not register a plugin. See the [desktop installation guide](docs/desktop-install.md)
-for complete steps and troubleshooting.
+for complete steps and troubleshooting. The guide distinguishes tested installation
+routes from menu procedures that still need validation.
 
 ### Claude Code
 
 In the desktop app, use the **Code** tab with a **Local** session. Open
-**+ → Plugins → Add plugin**, select the `study-kit` marketplace, and install
-`study-kit`. If that marketplace is missing, register it first using the terminal
-commands in the [desktop guide](docs/desktop-install.md#claude-code-desktop).
-Claude's Chat and Cowork tabs use a separate installation surface.
+**+ → Plugins** to inspect installed plugins. In the tested app, **Browse plugins**
+opens Customize; labels differ from the documentation's **Add plugin** wording.
+The verified route is to install/update with the Claude CLI, then start a new
+Code session; see the [desktop guide](docs/desktop-install.md#claude-code-desktop).
+Do not assume that an account-level Customize install is the same as a local
+Claude Code installation.
 
 In the interactive Claude Code CLI, these are slash commands:
 
@@ -78,10 +81,10 @@ Its model recommendation is Opus at high reasoning; see the
 
 ### Codex
 
-In the desktop app, open **Plugins**, choose the Study Kit marketplace, and install
-**Study Kit** (`study-kit-codex`). If it is missing, register the repository with
-the first command below, restart the app, and return to Plugins. The second
-command installs it directly when using the CLI instead of the menu.
+The commands below were tested for GitHub and downloaded-folder installation,
+followed by an actual `study-start` invocation in a fresh Codex CLI session.
+Desktop **Plugins** menu installation is documented by OpenAI but has not yet
+been verified in this environment; see the guide before choosing that route.
 
 To ask for help from a **local Codex task**, paste:
 
@@ -91,8 +94,9 @@ To ask for help from a **local Codex task**, paste:
 > settings. Verify installation and tell me how to start it in a new task.
 
 This asks the agent to perform setup using available tools; it is not a built-in
-chat installation command. If the CLI is unavailable, use the
-[downloaded-folder route](docs/desktop-install.md#download-and-install-files).
+chat installation command. The
+[downloaded-folder guide](docs/desktop-install.md#download-and-install-files)
+distinguishes the tested CLI route from the unverified CLI-free menu route.
 
 Run these in a terminal with a Codex CLI that supports `codex plugin`:
 
