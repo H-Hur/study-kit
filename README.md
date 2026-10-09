@@ -1,13 +1,17 @@
-# study-kit — a study support bundle
+# study-kit — self-study and textbook authoring
 
-Use **learning mode** for your own study or **authoring mode** to write for other
-readers. The same source, textbook, revision, and publication procedures serve both;
-authoring keeps the instructor and learner levels separate. At startup, choose personal
-learning or teaching. Teaching then asks whether to work within the instructor's
-knowledge or include a bounded researched extension, while matching the learners' level.
+**Create a textbook for your own learning or develop teaching materials for other
+learners.** Study Kit supports both workflows in one plugin for Claude Code and Codex.
 
-**Build a textbook around what you already know, then revise it from the questions
-you ask while studying.**
+- **Learning mode:** start from your current level, skip familiar material, and build
+  a focused study plan and textbook. Revise the material as questions arise.
+- **Authoring mode:** create a course or textbook for an intended audience. Record
+  the instructor's and learners' levels separately, then choose whether to organize
+  material within the instructor's knowledge or add a bounded, researched extension.
+  The explanations and exercises stay appropriate to the learners' level.
+
+Both modes share source verification, textbook writing, revision, and PDF/DOCX
+publication procedures. The first intake question establishes which mode you need.
 
 [Read the public demo](https://study-kit-demo.gjgusdh.chatgpt.site) ·
 [Try it with your own goal](docs/try-study-kit.md) · [Install](#install)
@@ -17,12 +21,12 @@ plan, and a textbook passage before and after a question. It runs no AI and requ
 no installation. Its example was written for demonstration, not taken from a real
 learner's records. The demo lives separately from this reusable kit.
 
-A plugin for Claude Code and Codex that packages, as reusable procedures and templates,
-the procedure for helping an expert come up to working speed in an adjacent field in a
-short time.
+The plugin packages reusable procedures and templates for focused self-study and
+source-based textbook production. It can help an expert approach an adjacent field
+or help an instructor prepare material for learners with a different background.
 
-**No field of study is built in.** What to teach is settled by asking the learner. That
-is the first rule, and everything else follows from it.
+**No field of study is built in.** The subject, audience, scope, and depth come from
+intake with the learner or instructor.
 
 Use it when you want to get oriented in a field quickly but do not have time to
 work carefully through an entire textbook and all its exercises. Start from what
@@ -37,10 +41,12 @@ when the goal requires it.
 0 intake → 1 sources → 2 boundary & goal → 3 plan → 4 run & feedback loop → 5 finish & review
 ```
 
-It starts by asking the learner five things, builds an index of sources whose grade has
-been judged, works backward from the target capability to a curriculum, writes a
-textbook fitted to that person yet readable by others, and turns the learner's questions
-back into revisions of the textbook. The whole procedure is in
+After choosing a mode, intake establishes the relevant levels, goals, constraints,
+and style. The kit verifies sources, works backward from the learners' target
+capabilities to a study or content plan, and writes the textbook. Learning mode uses
+study questions to improve explanations; authoring mode uses editorial feedback
+without treating the instructor's questions as evidence of learner comprehension.
+The whole procedure is in
 [`plugins/study-kit/docs/method.md`](plugins/study-kit/docs/method.md).
 
 Opening this folder in Claude Code loads [`CLAUDE.md`](CLAUDE.md); Codex reads
