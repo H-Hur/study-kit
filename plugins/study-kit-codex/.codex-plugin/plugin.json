@@ -1,7 +1,7 @@
 {
   "name": "study-kit-codex",
-  "version": "2.1.0",
-  "description": "Study support bundle for quickly learning what you need when you lack time for a full textbook and all its exercises. Skip familiar material and build a focused plan and textbook from your background and goal. Includes 14 Codex skills.",
+  "version": "2.1.1",
+  "description": "Self-study and textbook authoring with verified sources, focused curricula, revision workflows, and PDF/DOCX publication. Choose personal learning or teaching material creation. Includes 14 Codex skills.",
   "author": {
     "name": "Hyeonoh Hur"
   },
@@ -20,8 +20,8 @@
   "repository": "https://github.com/H-Hur/study-kit",
   "interface": {
     "displayName": "Study Kit",
-    "shortDescription": "Skip what you know. Focus on what you need to learn.",
-    "longDescription": "Quickly get oriented in an adjacent field when you do not have time to work through an entire textbook and all its exercises. Start from what you already know, skip familiar material, and focus on your target capability. Verify sources, build a focused plan and textbook, and revise it from your questions. Includes 14 skills. Publish PDF and/or DOCX using available converters and layout verification tools.",
+    "shortDescription": "Study and create textbooks",
+    "longDescription": "Create a focused textbook for your own learning or teaching materials for other learners. Learning mode starts from your level and skips familiar material. Authoring mode records instructor and learner levels, then supports material within the instructor’s knowledge or a bounded researched extension. Verify sources, design curricula, revise explanations, and prepare PDF/DOCX editions with available conversion and layout tools. Includes 14 skills. Available for noncommercial use under the repository’s component licenses.",
     "developerName": "Hyeonoh Hur",
     "category": "Productivity",
     "capabilities": [
@@ -30,9 +30,11 @@
     ],
     "websiteURL": "https://github.com/H-Hur/study-kit",
     "defaultPrompt": [
-      "Help me start a course of study by asking about my background and goals.",
-      "Prepare my next study session from the curriculum and remaining questions.",
-      "Revise my textbook from the pending changes and prepare both PDF editions."
-    ]
+      "Start a focused course of study from my background and learning goal.",
+      "Help me create a textbook for other learners; ask about instructor and learner levels.",
+      "Revise my textbook and prepare the selected PDF or DOCX editions."
+    ],
+    "composerIcon": "./assets/study-kit.svg",
+    "logo": "./assets/study-kit.svg"
   }
 }

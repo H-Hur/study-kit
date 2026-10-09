@@ -133,7 +133,7 @@ def link_skill_mentions(text: str, target: Path) -> str:
 def render() -> dict[Path, bytes]:
     validate_catalogs()
     files = {}
-    for folder in ("skills", "agents", "commands", "docs", "templates", "licenses"):
+    for folder in ("skills", "agents", "commands", "docs", "templates", "licenses", "assets"):
         for path in sorted((SOURCE / folder).rglob("*")):
             if not path.is_file():
                 continue
@@ -165,7 +165,7 @@ def render() -> dict[Path, bytes]:
     manifest = json.loads((SOURCE / ".claude-plugin/plugin.json").read_text())
     manifest.update(
         name=NAME,
-        description="Study support bundle for quickly learning what you need when you lack time for a full textbook and all its exercises. Skip familiar material and build a focused plan and textbook from your background and goal. Includes 14 Codex skills.",
+        description="Self-study and textbook authoring with verified sources, focused curricula, revision workflows, and PDF/DOCX publication. Choose personal learning or teaching material creation. Includes 14 Codex skills.",
         skills="./skills/",
         homepage="https://github.com/H-Hur/study-kit",
         repository="https://github.com/H-Hur/study-kit",

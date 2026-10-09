@@ -4,12 +4,9 @@ Study Kit helps you turn an existing area of expertise into a starting point for
 learning an adjacent field. It asks about your background and goal, checks sources,
 builds a plan and textbook, and carries questions back into textbook revisions.
 
-Start with the [public demo](https://study-kit-demo.gjgusdh.chatgpt.site).
-It is a Korean-language illustrative walkthrough, with a learner brief, a short
-plan, a textbook passage, a question, and a revised explanation. The example is
-newly written demonstration content, not a real learner record or evidence of
-learning outcomes. Reading it requires no installation; it does not run a model.
-Study Kit itself can produce material in the learner's chosen language.
+Install the plugin using the steps below. There is currently no public demo.
+Study Kit can produce material in your chosen language and also supports textbook
+authoring for other learners.
 
 ## Who should try it first
 
@@ -42,7 +39,10 @@ Tell the agent:
 > enough to [what I must be able to do when it is over]. Start a course of study
 > with Study Kit.
 
-The opening exchange settles your background, goal, available time, preferred
+> I want to create a textbook for [audience]. My background is [instructor level],
+> and the learners know [learner level]. Start in authoring mode with Study Kit.
+
+The opening exchange first selects learning or authoring mode, then settles your background, goal, available time, preferred
 explanation style, and delivery needs. Review the profile and plan with the agent
 before it proceeds. During study, ask about a passage that does not land and use
 the review and publishing workflow to carry that question into the next edition.
@@ -69,5 +69,4 @@ conversion that lost text. These are the origin of maintenance rules, not eviden
 of broad effectiveness. The Codex edition adapts the shared procedures for its host;
 those original measurements are not Codex measurements.
 
-Public demo and first-use guide added on 2026-09-06. This introduces an entry point
-for readers, not a new measured learning procedure.
+First-use guide updated on 2026-10-09 to remove an unavailable demo link.

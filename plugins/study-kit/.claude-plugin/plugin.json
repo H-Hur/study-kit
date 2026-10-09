@@ -1,7 +1,7 @@
 {
   "name": "study-kit",
-  "version": "2.1.0",
-  "description": "Study support bundle for quickly learning what you need in an adjacent field when you lack time for a full textbook and all its exercises. Start from what you already know, skip familiar material, and build a focused plan and textbook. Includes 4 agents, 6 skills, and 4 commands.",
+  "version": "2.1.1",
+  "description": "Self-study and textbook authoring with verified sources, focused curricula, revision workflows, and PDF/DOCX publication. Choose personal learning or teaching material creation. Includes 4 agents, 6 skills, and 4 commands.",
   "author": {
     "name": "Hyeonoh Hur"
   },

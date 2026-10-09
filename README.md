@@ -13,13 +13,11 @@ learners.** Study Kit supports both workflows in one plugin for Claude Code and 
 Both modes share source verification, textbook writing, revision, and PDF/DOCX
 publication procedures. The first intake question establishes which mode you need.
 
-[Read the public demo](https://study-kit-demo.gjgusdh.chatgpt.site) ·
-[Try it with your own goal](docs/try-study-kit.md) · [Install](#install)
+[Try it with your own goal](docs/try-study-kit.md) · [Install](#install) ·
+[Download the latest release](https://github.com/H-Hur/study-kit/releases/latest)
 
-The demo is a Korean-language illustrative walkthrough: a learner brief, a short
-plan, and a textbook passage before and after a question. It runs no AI and requires
-no installation. Its example was written for demonstration, not taken from a real
-learner's records. The demo lives separately from this reusable kit.
+**Available for noncommercial use.** Code: PolyForm Noncommercial 1.0.0.
+Documents and prompts: CC BY-NC-SA 4.0. See [license scope](LICENSE).
 
 The plugin packages reusable procedures and templates for focused self-study and
 source-based textbook production. It can help an expert approach an adjacent field

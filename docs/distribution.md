@@ -271,3 +271,11 @@ and records deduplicated recurrence history. Audits detect regressions, and chan
 source conventions trigger revalidation rather than permanent blanket exemptions.
 The package supplies the empty template and procedure; no learner data is bundled.
 Included in the 2.1.0 release.
+
+## Version 2.1.1 — international listing preparation (2026-10-09)
+
+Both package descriptions now cover personal learning and textbook authoring. The
+Codex listing includes a square SVG icon and a short description under 30 characters.
+The README and first-use guide no longer advertise an unavailable demo. See the
+[international distribution notes](international-distribution.md) for submission copy
+and the distinction between repository releases and directory approval.
