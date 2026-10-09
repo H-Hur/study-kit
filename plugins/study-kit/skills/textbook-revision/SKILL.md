@@ -5,8 +5,15 @@ description: The procedure for turning the learner's questions into drafted text
 
 Read the [runtime notes](../../docs/runtime.md) once per task before following this procedure.
 
+Read the recorded project mode and apply the [mode contract](../../docs/project-modes.md).
+Authoring adaptations take precedence over learner-only steps below.
+
 
 # The revision loop — turning questions back into the textbook
+
+In authoring mode, treat requester questions and corrections as editorial input. Use
+the same trace-back and queue process, without diagnosing the author's understanding.
+The learner-evidence interpretation below applies to learning mode.
 
 ## A question back is not a shortfall in the learner but a defect in the textbook
 
@@ -51,16 +58,37 @@ or quietly disappears.
 What goes into one item: the date registered and its status, the trigger (a quotation of
 the learner's own words), where it is to be reflected, the substance of the answer, **a
 draft of the revised wording**, and the attendant corrections (other places arising from
-the same cause).
+the same cause), and the source or reasoning supporting the correction. Link a
+verified source and location for factual changes; record uncertainty when unresolved.
+Apply the [claim verification rules](../../docs/evidence-verification.md) to every
+claim in a rewritten factual sentence, including unchanged claims.
+Register first: a question or correction alone does not authorize changing the master
+or publishing it. An explicit request to edit the master can override this queue default.
 
 Do not skip the attendant corrections. If the misunderstanding came from an unstated
 premise, the same premise is usually missing in several places in the textbook.
 
-### 4. Bump the edition
+### 4. Reconcile direct edits, then bump the edition
 
-When issuing a new edition, **open the pending-revisions document first** and fold in every
-waiting item. Change the status of each reflected item to `reflected (edition N)` and move
-it to the reflection history at the end.
+Before applying the queue, follow [direct-edit reconciliation](references/direct-edits.md)
+for any delivered working copies or user-edited artifacts. Register the full semantic
+changes, preserve user deletions, and reconcile with the recorded authoritative source.
+Do not regenerate from an older master over the user's saved work. If figures or tables
+are inserted, deleted, or reordered, use [safe renumbering](references/renumbering.md);
+range-first replacements alone do not prevent double changes.
+
+
+Read the publication trigger in the project instructions. Reuse the user's existing
+authorization; do not ask again within an authorized standing trigger. If none exists,
+default to an explicit request to publish and record that policy once. Before the
+trigger is met, keep revised wording in the queue.
+
+When the trigger is met, **open the pending-revisions document first** and fold in every
+waiting item within the authorized scope. Record which items were applied to the master.
+Only after the requested artifacts pass publication checks, change their status to
+`reflected (edition N)` and move them to the reflection history. A failed conversion
+leaves the edition unpublished and the items applied-but-unpublished, not reflected;
+a retry must not apply their changes a second time.
 
 - A large item (a full pass over the style, say) may be split across rounds. When splitting,
   say so in the item.
@@ -71,6 +99,10 @@ it to the reflection history at the end.
 ## Other input routes
 
 Questions do not arrive only in conversation. Gather the following into the same document.
+
+- **Direct edits, comments, and tracked changes in delivered files** — use
+  [direct-edit reconciliation](references/direct-edits.md), including whole-content
+  comparison and the authoritative-source decision.
 
 - **Exchanges recovered from the secondary track** — questions the learner left in the
   scraps-of-time channel.

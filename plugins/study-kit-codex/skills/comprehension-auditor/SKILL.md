@@ -15,6 +15,9 @@ are unavailable, perform it directly with the same restrictions.
 
 Read the [runtime notes](../../docs/codex-runtime.md) once per task before following this procedure.
 
+Read the [mode contract](../../docs/project-modes.md) and use the intended reader
+profile in authoring mode. Do not classify author/editor remarks as learner evidence.
+
 
 # The comprehension auditor — finding what was not understood from what was asked back
 

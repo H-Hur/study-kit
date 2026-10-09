@@ -44,7 +44,12 @@ to undo.
 procedure is in `plugins/study-kit/skills/learner-intake/SKILL.md`; what is written here
 is only the opening questions actually to be put.
 
-Do not pour out all five at once. **Ask ① and ② first, and move on to ③④⑤ after the
+First ask whether the requester is learning personally or creating teaching material
+for other learners. For personal learning, ask only learner level. For teaching, ask
+both instructor and learner levels, then choose support within instructor knowledge
+or a bounded researched extension. Follow the mode contract for details.
+
+After that decision, do not pour out all five at once. **Ask unresolved parts of ① and ② first, and move on to ③④⑤ after the
 answers come back** — the later questions change depending on the earlier answers. For
 items already answered in the first message, lay out what was understood and ask only
 for what is missing.
@@ -91,7 +96,7 @@ study-kit/
     │   ├── curriculum-design/    work backward from the target capability to sessions (+ plan template)
     │   ├── textbook-authoring/   the dual-audience textbook (+ textbook master HTML, style rules)
     │   ├── textbook-revision/    turn questions into drafted revisions (+ pending-revisions template)
-    │   └── textbook-publish/     issue two editions, exercise and answer
+    │   └── textbook-publish/     publish PDF/DOCX exercise and answer variants
     ├── agents/                   work with a lot to read where only the conclusion is needed (delegate)
     │   ├── source-scout          acquire, verify, normalize, and list sources
     │   ├── drill-designer        design review questions and diagnostic drills
@@ -126,7 +131,8 @@ Once intake is done, go in this order. The basis for each judgment is in
    For items that need a decision, lay out options and get them settled.
 5. **Textbook** — once the curriculum is settled, writing the whole thing up front is
    better. For judging length, see section 5.
-6. **Publish** — produce two editions, exercise and answer, and send them to the channel.
+6. **Publish** — at the recorded trigger, produce the selected PDF/DOCX formats and
+   exercise/answer variants in a new edition directory, then deliver as authorized.
 
 That much is the preparation before study begins. After that the loop runs each session:
 `study-session` → session → `study-review` → `study-publish`.
@@ -249,3 +255,12 @@ in the repository. Historical budget rules and measurements are retained as
 attributed records, with separate current-work guidance. Codex specialist skills
 now specify dispatch, input and write boundaries, completion handling, and direct
 execution fallback. These are runtime adaptations, not new learning measurements.
+
+
+### Project-mode update — 2026-10-09
+
+Learning and authoring are modes of this same plugin. Read
+`plugins/study-kit/docs/project-modes.md` before applying personal-study instructions
+to a requester writing for other readers. The authoring contract overrides those
+learner-only assumptions; it does not introduce classroom grading or student tracking.
+Maintain shared production procedures once and generate the Codex distribution.

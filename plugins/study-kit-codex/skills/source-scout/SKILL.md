@@ -54,6 +54,16 @@ pdftotext -f 1 -l 1 references/<name>.pdf - | head -40
 Mark citations that could not be compared as **"unverified"** in the index. Omit that marking
 and there is later no telling the verified from the guessed.
 
+When extracting facts, follow the [claim verification rules](../../docs/evidence-verification.md).
+The first-page check establishes bibliographic identity, not every claim in the work.
+Verify the actual passage, preserve its location and context, and do not treat a
+summary's quotation as verified without checking it against the original.
+
+For terminology research, locate relevant textbooks and professional institutions'
+handbooks/guidebooks first. Identify the original edition and passages documenting
+terms and expression conventions, and label that role in the source index. Report
+conflicting usage or inaccessible originals rather than infer a convention.
+
 ### ④ Build the normalization
 
 ```bash

@@ -5,8 +5,19 @@ description: The procedure for receiving a new learner and building the starting
 
 Read the [runtime notes](../../docs/codex-runtime.md) once per task before following this procedure.
 
+Read the recorded project mode and apply the [mode contract](../../docs/project-modes.md).
+Authoring adaptations take precedence over learner-only steps below.
+
 
 # Learner intake — what to ask before anything else
+
+Start by asking whether the project is for personal learning or teaching other
+learners (reuse an explicit answer already given). For personal learning, ask only
+the learner's level. For teaching, ask the instructor's and learners' levels
+separately, then ask whether to support content within the instructor's knowledge
+or include a bounded researched extension. Record that choice before curriculum or
+content work. Apply the five-topic adaptation in the mode contract for the remaining
+intake. A supplied instructor biography is not the learners' knowledge boundary.
 
 ## Why the conductor must do this directly
 
@@ -22,8 +33,9 @@ on that profile is wrong.
 A learner putting their background in the first message is luck, not procedure. **The kit
 asks first.** There are five things to ask.
 
-**① Who is the learner.** What field are they an expert in, and what are the specifics of
-that expertise (the theory, tools, and practice they handle well)? How far does their
+**① Who is the learner.** What is their current level, and what theory, tools, and
+practice can they already handle? If they have a field of expertise, ask for its
+specifics; a beginner is a valid level, not a reason to invent expertise. How far does their
 adjacent knowledge reach into the field they want to learn?
 — This answer sets the floor of explanation. Explaining what is already known is wasted
 page and discourtesy.
@@ -59,12 +71,21 @@ whole practical strand to the goal that ② had not surfaced. So when asking abo
 not stop at "what do you have" — **follow it with "and what do you mean to do with it."**
 
 **⑤ Preferred style of explanation.** Style (bulleted lists or continuous prose),
-language, preference for visuals, phrasing to avoid.
+language, preference for visuals, phrasing to avoid. Record any chosen prose editor
+and when it should run, following the [language-editing policy](../textbook-authoring/references/language-editing.md).
+This belongs to the style discussion, not a separate mandatory tool-installation step.
+When the learner names different languages for conversation and artifacts, record
+**Conversation language** (including questions, reports, and short progress messages)
+and **Document language(s)** (with the artifacts each applies to). Otherwise keep one
+language entry. This clarifies item ⑤; it is not a sixth intake question. Do not infer
+a change of conversation language from an English skill or the document being edited.
 — Learners usually do not mention this unprompted. That is exactly why it must be asked.
 
 ### 2. How to ask
 
-Do not pour out all five at once. **Ask ① and ② first, and move on to ③④⑤ after the
+After the mode decision (and, for teaching, both levels and the content approach),
+use the remaining five-topic intake without re-asking recorded answers.
+Do not pour out all five at once. **Ask unresolved parts of ① and ② first, and move on to ③④⑤ after the
 answers come back** — the later questions change depending on the earlier answers. For
 items whose options are obvious (depth, execution, channel candidates), do not ask in open
 prose — **lay out concrete options and have the learner choose.** Spelling the decisions

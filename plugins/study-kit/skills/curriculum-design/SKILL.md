@@ -5,6 +5,9 @@ description: The procedure for working a session-by-session curriculum backward 
 
 Read the [runtime notes](../../docs/runtime.md) once per task before following this procedure.
 
+Read the recorded project mode and apply the [mode contract](../../docs/project-modes.md).
+Authoring adaptations take precedence over learner-only steps below.
+
 
 # Curriculum design — working backward from capability
 

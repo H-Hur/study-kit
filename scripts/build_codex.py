@@ -79,7 +79,7 @@ def adapt(text: str, source_path: Path) -> str:
             '   study project. Copy the [style rules](../textbook-authoring/references/style-rules.md)\n'
             '   to `docs/study-kit-style-rules.md`. Create `docs/notes/` and `docs/reports/` there.')
     elif relative == "commands/study-session.md":
-        text += "\nUse a session number supplied by the learner; otherwise determine the next session from the curriculum and work log.\n"
+        text += "\nIn learning mode, use a session number supplied by the learner; otherwise determine the next session from the curriculum and work log. In authoring mode, use the agreed writing/review milestone instead.\n"
     elif relative == "agents/comprehension-auditor.md":
         text = replace_once(text,
             '1. **Session conversation records**: `~/.claude/projects/<project path with slashes replaced\n'

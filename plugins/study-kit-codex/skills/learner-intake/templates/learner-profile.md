@@ -1,4 +1,14 @@
-# Learner profile
+# {{Learner profile / Intended reader profile}}
+
+- **Project mode**: {{learning / authoring}}
+- **Profile subject**: {{the requester / intended reader group}}
+- **Basis**: {{learner statements / author assumptions / supplied reader evidence}}
+
+{{In authoring mode, keep requester expertise separate from reader capabilities.
+Record instructor level, the selected content approach and extension bounds, and
+draft/decision authority in project instructions. Learning mode needs no separate
+instructor profile or expansion choice. Replace personal-session
+budget with reader depth/time where known; do not invent the author's study schedule.}}
 
 - Written: {{date}} · Status: **hypothesis** (record of corrections at the end)
 
@@ -39,8 +49,15 @@
 
 - **Style**: {{e.g. no bulleted term lists, continuous prose, no translationese}}
 - **Language**: {{language of documents and conversation}}
+  {{If the learner specifies a split, replace this entry with Conversation language
+  (questions, reports, and status messages) and Document language(s), naming the
+  artifacts each applies to. Do not keep both alternatives.}}
 - **Visuals**: {{preference}}
 - **Avoid**: {{phrasing or format the learner has said they dislike}}
+- **Language editing**: English grammar agent {{user choice: njjenkins/proofreader or
+  Daniel Rosehill/proofreader; source URL}}; American English (en-US); sentence-style
+  skill `writing-clearly-and-concisely` (Strunk). {{project style guide and
+  agreed timing; default to on request with a recommendation after three skipped editions}}
 
 ## Record of corrections
 

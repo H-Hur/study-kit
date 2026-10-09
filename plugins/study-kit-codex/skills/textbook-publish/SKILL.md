@@ -1,80 +1,133 @@
 ---
 name: textbook-publish
-description: The procedure for turning the textbook HTML into two PDF editions, exercise and answer, and sending them to the learner's channel. Use it for requests like "send me the textbook", "make it a PDF", or "ship the revised edition". It covers the two-edition principle that exploits collapsed answers, the headless Chrome conversion commands, page-count verification, and four measured traps including the one where collapsed content vanishes in print.
+description: Publish a textbook as PDF, DOCX, or both, with the requested exercise and answer variants. Use for requests to send a textbook, make a PDF or Word document, or issue a revised edition. Covers the publication trigger, immutable edition folders, conversion, content and layout checks, and authorized delivery.
 ---
 
 Read the [runtime notes](../../docs/codex-runtime.md) once per task before following this procedure.
 
+Read the recorded project mode and apply the [mode contract](../../docs/project-modes.md).
+Authoring adaptations take precedence over learner-only steps below.
 
-# Publishing the textbook — making two editions and sending them
 
-The master is a single file, `docs/textbook.html`. Every published edition derives from it,
-and the master is not modified.
+# Publishing the textbook — formats, answer variants, and delivery
 
-## The principle of two editions
+The default master is `docs/textbook.html`; use the authoritative source recorded
+in the project. Before conversion, follow [direct-edit reconciliation](../textbook-revision/references/direct-edits.md)
+for delivered working copies. Every edition derives from that reconciled source, and
+conversion does not modify it. If another format is authoritative, use a compatible
+conversion workflow and record any unsupported HTML features; the HTML examples below
+apply only to a current, reconciled HTML source. Revision of the master is governed by
+[`textbook-revision`](../textbook-revision/SKILL.md) and the recorded publication trigger.
 
-It uses, as is, the property that the review questions are collapsed inside `<details>`.
+## Choose the format and answer variants
 
-- **Exercise edition** — convert the master unchanged. Collapsed answers are not printed, so
+Use the format already requested or recorded in the project: **PDF, DOCX, or both**.
+DOCX-only delivery is valid; a PDF used internally for layout verification need not be
+a deliverable. Ask only if the format is unresolved and matters to the task.
+
+Exercise and answer are variants of the same numbered edition. For browser PDF
+conversion, review answers collapsed inside `<details>` provide the separation.
+
+- **Exercise variant** — convert a copy with review answers collapsed. Collapsed answers are not printed, so
   only the questions appear. For working through alone in scraps of time.
-- **Answer edition** — expand the `<details>` in a copy, then convert. The answers appear too.
+- **Answer variant** — expand the `<details>` in a copy, then convert. The answers appear too.
   For checking in a focused sitting.
 
-If the learner has only one kind of time, issue only one edition. The "scraps of time" item
-in the profile is the basis for that judgment.
+Honor explicitly requested variants. Otherwise, if the learner has only one kind of
+time, issue only the appropriate variant; use the "scraps of time" item in the profile
+as the basis for that judgment.
 
-## Procedure
+## Reserve an edition before conversion
 
-Use the available host PDF workflow when it can preserve both editions and verify
-answer separation. The following commands are a local example; locate the actual
-executables and obey the host's browser/tool policy before using them. This package
-supplies no browser or converter. If conversion is unavailable, return the HTML
-master and identify the missing dependency without claiming PDF publication.
+Confirm the project publication trigger is met; an explicit request to publish counts.
+Reuse standing authorization within its scope. Reserve a new directory such as
+`output/3_20261009_213000/` (edition identifier and local `YYYYMMDD_hhmmss`). Record
+its timezone/UTC offset in `README.md`. Create it exclusively: if it already exists,
+choose a fresh timestamp; never reuse it silently. Until checks pass, its README
+must say **draft / unpublished**. Conversion intermediates live in a separate staging
+folder, and source-relative assets must remain resolvable in every staged copy.
+
+After verification, mark it published. Published directories are immutable. Corrections
+normally make a new edition. An explicit replacement request is the only exception:
+first compare the target with the originally published copy or recorded hashes to check
+for user edits. If that cannot be established, preserve it and use a new directory or
+resolve the conflict with the user. Never overwrite an open Word file.
+
+Use the [edition README template](templates/edition-README.md) to record scope,
+changes, source snapshot/revision, artifact hashes, tools, and verification. Preserve
+the exact publication baseline separately from editable working copies, and record
+both paths. A hash detects changes but cannot replace the original for comparison.
+Keep the
+edition label and date there and in the directory name, out of the textbook body,
+appendices, and footer. Give delivered files edition-qualified names if detached from
+the folder, so an attachment cannot silently replace an earlier edition.
+
+## PDF procedure
+
+Use an available host workflow that preserves answer separation and verifies layout.
+On Windows, or without Poppler, read the [platform notes](../../docs/platform-tools.md).
+The following is a POSIX example, not a Windows command. Locate the actual browser
+and obey the host's tool policy; this package supplies no converter.
+
+Prepare `exercise.html` and `answer.html` in staging using an HTML parser. In review
+question `details` elements, remove the `open` attribute for exercise and add it for
+answer. Handle attributes and nesting; literal substitution of `<details>` alone misses
+`<details class="...">`. Keep question text in both. Preserve relative assets by copying
+them with their relative layout or resolving their URLs against the original source.
+Inspect the resulting pages before printing. Do not rely on a `file://` query toggle.
 
 ```bash
-SRC=docs/textbook.html
-TMP="$(mktemp -d)"
-CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"   # adjust to the install path
-
-# ① Exercise edition — answers hidden (master unchanged)
+# Set CHROME to a discovered executable; STAGE to the prepared copies;
+# OUT to the newly reserved edition directory (absolute paths for both).
 "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer \
   --virtual-time-budget=4000 \
-  --print-to-pdf="$PWD/docs/textbook-drill.pdf" "file://$PWD/$SRC"
-
-# ② Answer edition — answers expanded (substituted in a copy)
-sed 's/<details>/<details open>/g' "$SRC" > "$TMP/print.html"
+  --print-to-pdf="$OUT/textbook-drill.pdf" "file://$STAGE/exercise.html"
 "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer \
   --virtual-time-budget=4000 \
-  --print-to-pdf="$PWD/docs/textbook.pdf" "file://$TMP/print.html"
+  --print-to-pdf="$OUT/textbook.pdf" "file://$STAGE/answer.html"
 
-# ③ Page-count verification
-pdfinfo docs/textbook.pdf | grep '^Pages'                    # this one if poppler is available
-pdftotext docs/textbook.pdf - | grep -c $'\f'                # otherwise count the page separators
-
-# ④ Confirm the two editions actually differ — an answer-only phrase must be absent from
-#    the exercise edition and present in the answer edition
-pdftotext docs/textbook-drill.pdf - | grep -c '<a phrase that appears only in an answer>'   # must be 0
-pdftotext docs/textbook.pdf       - | grep -c '<a phrase that appears only in an answer>'   # must be 1 or more
+pdfinfo "$OUT/textbook.pdf" | grep '^Pages'
+pdftotext "$OUT/textbook-drill.pdf" "$STAGE/exercise.txt"
+pdftotext "$OUT/textbook.pdf" "$STAGE/answer.txt"
+# Choose a real answer-only phrase: exercise must yield 0 matches, answer at least 1.
+grep -F -c -- '<answer-only phrase>' "$STAGE/exercise.txt"
+grep -F -c -- '<answer-only phrase>' "$STAGE/answer.txt"
 ```
 
-`--virtual-time-budget` gives scripts time to draw the figures. Include it whenever there
-are interactive figures. Give the output path as an **absolute path**.
+`--virtual-time-budget` allows scripts to draw interactive figures; also inspect their
+printed still frames. Use absolute output paths and properly encoded file URLs when
+paths contain special characters. Check page counts for every produced variant, render
+and inspect pages for clipping or lost content, and compare figures, equations, tables,
+citations, and footnotes against the master. A single answer phrase is a smoke check:
+verify all answer blocks are absent/present as intended and all questions survive.
+
+## DOCX procedure
+
+For DOCX or mixed output, read [Word conversion and verification](references/docx.md).
+Collapsed HTML is not a reliable DOCX answer filter. Remove answer content explicitly
+from the exercise copy; include it explicitly in the answer copy before conversion.
+Perform the same separation and content checks as for PDF, plus actual Word layout
+verification where available. Keep unverified artifacts marked draft and state exactly
+which checks could not be run. If a required converter is unavailable, return the
+available source/draft and name the missing dependency; do not claim publication.
 
 ## Measured traps
 
 1. **Collapsed `<details>` does not print its content.** Exploiting that property is what
    makes two editions possible; not knowing it leaves the answer edition without answers.
-   Always convert the answer edition from the substituted copy. Every time you publish,
-   **confirm with ④ above that the two editions actually differ** — a substitution can fail
+   Always convert the answer variant from the expanded copy. Every time you publish,
+   **confirm answer separation as described above** — a substitution can fail
    silently and the file sizes still come out similar, so the eye will not catch it.
 2. **Splitting editions by a JS branch on the `file://` URL query is unreliable.** The branch
-   is sometimes not applied at the moment of headless conversion. Using a substituted copy
+   is sometimes not applied at the moment of headless conversion. Using a prepared copy
    is the certain way.
 3. **Choose the page-count tool with care.** macOS `mdls` depends on the Spotlight index and
    returns `(null)` for paths that are not indexed (temporary folders and the like) —
    measured, it came back empty even inside the project folder. The page count reported by
    `file(1)` reads the declared value in the page tree and can be wrong. **Prefer `pdfinfo`
-   (poppler); if it is unavailable, count page separators with `pdftotext`.**
+   (Poppler), or PyMuPDF's document page count when Poppler is unavailable.** Text
+   page separators are a cross-check only when extraction preserves one per page;
+   see the platform notes.
 4. **The sending tool may restrict which folders it can read.** Messenger integrations
    sometimes refuse to attach files outside a designated working folder. Copy the files into
    the permitted folder before sending.
@@ -95,9 +148,9 @@ robust. A link drops out the moment it demands authentication.
 
 ```bash
 # Sending through a messenger CLI (tool and target are configured to the installation)
-cp docs/textbook.pdf docs/textbook-drill.pdf "$SEND_DIR/"
+cp "$OUT/textbook-drill.pdf" "$SEND_DIR/textbook-${EDITION}-drill.pdf"
 "$SEND_CLI" message send --channel "$CHANNEL" --target "$TARGET" \
-  --media "$SEND_DIR/textbook-drill.pdf" --force-document \
+  --media "$SEND_DIR/textbook-${EDITION}-drill.pdf" --force-document \
   -m "[exercise edition] {{one line on what was updated}}"
 ```
 
@@ -109,8 +162,23 @@ If the delivery channel has a resident agent, register the path of the latest pu
 edition so it can resend on the learner's request. Re-verify the registration with a
 confirming question — trusting the "registered" reply alone means missing a silent failure.
 
+## Required checks and optional language editing
+
+Before marking an edition published, complete the
+[numbering and citation checks](references/numbering-and-citations.md) on the final
+source and delivered outputs. Run them for every updated edition regardless of the
+language-editing schedule. Recheck affected targets after late changes.
+
+Grammar/English polishing is optional unless requested or scheduled. Follow the
+[editing policy](../textbook-authoring/references/language-editing.md): track consecutive
+published editions without a full pass and recommend one when the prospective count
+reaches three or more. Do not turn that recommendation into automatic editing or a
+publication blocker. Record the count only after successful publication.
+
 ## After publishing
 
-- Record the date, the edition, and the recipient in the work log.
+- Record the date, edition directory, formats, verification, and actual delivery result
+  in the work log. Mark queued revisions reflected only after publication checks pass.
+  A failed external delivery is recorded separately from successful local publication.
 - Keeping a web edition alongside preserves the interactive figures. But a web edition that
   requires authentication stays **secondary** and is never made the main channel.

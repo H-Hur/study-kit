@@ -10,7 +10,7 @@
   sessions in the curriculum. It is tied to no field of study.
 
   The parts and what they are for
-  - header.mast          Title, subtitle, edition label. Always keep the edition label.
+  - header.mast          Title and subtitle. Edition metadata belongs in the output README.
   - section.weeks        The study map. Give the week in progress class="week now".
   - section.chapter      One chapter = one session. Each chapter starts a new page in print.
   - aside.basics         The "groundwork" box. The central device of the dual-audience
@@ -19,7 +19,8 @@
   - figure               A figure. With controls (sliders) it becomes an interactive figure;
                          in print the controls are hidden and it becomes a still frame at
                          its default state.
-  - .eqbox               The equation box. No derivations — the result and the symbols only.
+  - .eqbox               Standalone equation with a real-text number at the far right.
+                         Inline mathematics is unnumbered. Explain symbols in following prose.
   - .keybox              "The three key sentences of this chapter." Exactly one per chapter.
   - details/summary/.ans Review questions. Answers go in .ans —
                          printed collapsed it carries only the questions, printed expanded it
@@ -33,7 +34,10 @@
   - The body is written as continuous prose, not as lists of words.
   - Do not presume the learner as an individual or the internals of a project (self-standing
     prose).
-  - Do not delete the edition label or the revision notice in the footer.
+  - Use title phrases and hierarchical heading numbers; renumber after adding sections.
+  - Caption figures below and tables above; separate complete blocks from prose by one line.
+  - Prefix table headers (A), (B), etc. and first-column data cells (1), (2), etc., with a space.
+  - Keep a stable feedback notice in the footer; omit changeable edition labels.
 -->
 <title>{{textbook title}}</title>
 <style>
@@ -168,11 +172,16 @@
     font-size: 13px; color: var(--muted); letter-spacing: 0.1em;
   }
   figure {
-    margin: 26px 0; padding: 18px 16px 14px;
+    margin: 1.9em 0; padding: 18px 16px 14px;
     border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
   }
   figure svg { width: 100%; height: auto; display: block; }
   figcaption { font-size: 13px; color: var(--muted); line-height: 1.7; margin-top: 10px; }
+  /* One body line outside each object/caption block; captions stay inside it. */
+  table { margin: 1.9em 0; border-collapse: collapse; width: 100%; }
+  caption { caption-side: top; text-align: left; margin-bottom: 0.5em; }
+  p:has(+ figure), p:has(+ table) { margin-bottom: 0; }
+  h4 { font-size: 1em; margin: 1.9em 0 0.6em; }
   .fig-scroll { overflow-x: auto; }
 
   .controls { display: grid; gap: 10px; margin: 6px 0 14px; }
@@ -231,7 +240,9 @@
     font-size: 15.5px; line-height: 2.15; overflow-x: auto; white-space: nowrap;
   }
   .eqbox i { font-family: Georgia, "Times New Roman", serif; }
-  .eqbox .eq-note { color: var(--muted); font-size: 13px; font-style: normal; }
+  .eqbox { display: flex; align-items: center; gap: 1em; break-inside: avoid; }
+  .eq-expression { flex: 1; text-align: center; min-width: 0; }
+  .eq-number { flex: 0 0 auto; margin-left: auto; text-align: right; }
 
   /* ── groundwork box (fundamentals) ─────── */
   .basics {
@@ -275,7 +286,6 @@
       <div class="eyebrow">{{field}}</div>
       <h1>{{textbook title}}</h1>
       <div class="mast-meta">
-        <span class="pill">{{edition label, e.g. 1st edition}}</span>
         <span>{{N}} sessions · {{total time}}</span>
         <span>{{date published}}</span>
       </div>
@@ -286,7 +296,7 @@
 
 <!-- ══════════════ study map ══════════════ -->
 <section>
-  <h2>Study map</h2>
+  <h2>1. Study map</h2>
   <p>{{The whole journey in one paragraph. Why this order — give the grounds, in the form of why a later topic holds only on top of an earlier one.}}</p>
   <div class="weeks">
     <div class="week now">
@@ -307,25 +317,26 @@
   </div>
 </section>
 
-<!-- ══════════════ chapter 0 — preparations ══════════════
+<!-- ══════════════ preparatory chapter ══════════════
      The first device of the dual-audience convention. It gathers the minimum fundamentals a
      first-time reader needs in order to read the body, even though the learner already knows
      them. Say to the learner explicitly that this chapter may be skipped.
 -->
 <section class="chapter" id="ch0">
   <div class="ch-head">
-    <div class="ch-no">CH.0 — Preparations</div>
-    <h2>{{the minimum for reading this book}}</h2>
+    <div class="ch-no">Preparations</div>
+    <h2>2. Preparations</h2>
   </div>
   <p>{{A paragraph stating the character of this chapter. Put the note that readers who already know this may skip it here.}}</p>
 
-  <h3>0.1 — {{section title}}</h3>
+  <h3>2.1. {{section title phrase}}</h3>
   <p>{{prose}}</p>
 
-  <h3>0.{{n}} — Glossary</h3>
+  <h3>2.2. Glossary</h3>
   <table class="gloss">
-    <tr><th>Term</th><th>Original</th><th>Meaning</th></tr>
-    <tr><td>{{term}}</td><td>{{original}}</td><td>{{meaning — one line}}</td></tr>
+    <caption>Table 1. Glossary</caption>
+    <thead><tr><th scope="col">(A) Term</th><th scope="col">(B) Original</th><th scope="col">(C) Meaning</th></tr></thead>
+    <tbody><tr><td>(1) {{term}}</td><td>{{original}}</td><td>{{meaning — one line}}</td></tr></tbody>
   </table>
 
   <div class="keybox">
@@ -339,13 +350,14 @@
 <!-- ══════════════ body chapter (one per session) ══════════════ -->
 <section class="chapter" id="ch1">
   <div class="ch-head">
-    <div class="ch-no">CH.1 — Session 1</div>
-    <h2>{{chapter title}}</h2>
+    <div class="ch-no">Session 1</div>
+    <h2>3. {{chapter title phrase}}</h2>
   </div>
 
   <p>{{Opening paragraph — why this chapter's question became necessary now. Join it to the previous chapter in prose.}}</p>
 
-  <h3>1.1 — {{write section titles as assertions}}</h3>
+  <h3>3.1. {{section title phrase}}</h3>
+  <h4>3.1.1. {{subsection title phrase}}</h4>
   <p>{{Prose. Why the concept became necessary, how it joins what came before, and what it leads to next.}}</p>
 
   <aside class="basics">
@@ -353,7 +365,7 @@
     <p>{{Fundamentals familiar to the learner but needed by a general reader. Kept here so the flow of the body is not broken.}}</p>
   </aside>
 
-  <h3>1.2 — {{section title}}</h3>
+  <h3>3.2. {{section title phrase}}</h3>
   <p>{{prose}}</p>
 
   <figure>
@@ -375,11 +387,12 @@
     <div class="readouts">
       <div class="readout"><div class="k">{{name of the value read out}}</div><div class="v" id="r1">—<small>{{unit}}</small></div></div>
     </div>
-    <figcaption>{{Figure caption — what to look at, and what moves when the handle is moved.}}</figcaption>
+    <figcaption>Figure 1. {{Figure caption — what to look at, and what moves when the handle is moved.}}</figcaption>
   </figure>
 
   <div class="eqbox">
-    {{the result equation, one line}} <span class="eq-note">— {{what this equation says}}</span>
+    <span class="eq-expression">{{the standalone result equation}}</span>
+    <span class="eq-number">(1)</span>
   </div>
   <p>{{Unpack the symbols of the equation in prose. No derivation.}}</p>
 
@@ -390,7 +403,7 @@
     <p>③ {{as a complete sentence}}</p>
   </div>
 
-  <h3>Review</h3>
+  <h3>3.3. Review</h3>
   <details>
     <summary>{{question 1 — one that demands a calculation or a judgment}}</summary>
     <div class="ans">{{The answer. Set any number in <b>bold</b>. A sentence or two on why.}}</div>
@@ -407,7 +420,7 @@
 
 <!-- ══════════════ shelf of sources ══════════════ -->
 <section>
-  <h2>Shelf of sources</h2>
+  <h2>4. Shelf of sources</h2>
   <p>{{The key sources carried over from the index. Do not demand close reading; state "for what, and when, is this opened."}}</p>
   <div class="shelf">
     <div class="book">
@@ -419,7 +432,7 @@
 </section>
 
 <footer>
-  <p><b>Revision notice</b> — {{What this edition covers, and when and how the next one arrives. State where to leave a question.}}</p>
+  <p><b>Feedback and updates</b> — {{Where to leave a question and how to obtain updates. Edition details are in the output README.}}</p>
 </footer>
 </main>
 

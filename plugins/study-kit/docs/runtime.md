@@ -62,3 +62,22 @@ the work log without claiming that work will run automatically.
 
 Runtime separation update — 2026-09-06. These are host execution instructions,
 not newly measured learning procedures.
+
+## Conversation and document languages
+
+Read the language contract in the study project's instructions/profile. If the user
+specified separate languages, use the conversation language for questions, reports,
+and short status messages, and the document language only for the relevant artifact.
+English kit instructions or an English file do not change the conversation language.
+If no split was requested, retain the single language entry; do not add an intake question.
+Feedback reported language drift in both hosts despite recorded preferences (#2).
+
+## Conversion environments
+
+Before conversion or source extraction, read the [platform notes](platform-tools.md).
+They cover Windows PowerShell 5.1, explicit UTF-8, PyMuPDF when Poppler is absent,
+DOCX ZIP/XML inspection without optional libraries, and bounded Word COM execution.
+Use the project's chosen PDF/DOCX formats; a missing PDF tool does not block DOCX-only
+work when its own conversion and verification tools are available.
+
+Feedback update — 2026-10-09 (#2, #6, #9).

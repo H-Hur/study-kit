@@ -5,6 +5,9 @@ description: The procedure for gathering study sources in four beats — seed co
 
 Read the [runtime notes](../../docs/runtime.md) once per task before following this procedure.
 
+Read the recorded project mode and apply the [mode contract](../../docs/project-modes.md).
+Authoring adaptations take precedence over learner-only steps below.
+
 
 # Source collection and the graded index
 
@@ -47,6 +50,19 @@ This quarantine rule is the most important thing in the procedure. Without it, u
 information seeps into the index and the textbook as fact, and afterwards there is no
 telling the verified from the guessed.
 
+For claims drawn from a source, follow the
+[claim verification rules](../../docs/evidence-verification.md). A correct citation
+is not proof of the source's alleged content. Distinguish original passages, extracted
+text, and generated summaries; inspect the relevant page/section for numbers,
+equations, dates, and other claims. Calculations check derivations and consistency;
+they do not independently establish the truth of empirical source inputs.
+
+For terminology and expression conventions, prioritize relevant textbooks and
+professional institutions' handbooks/guidebooks in the original source collection.
+Record which sources serve as terminology references and the relevant edition and
+page/section. Distinguish this role from evidence for individual factual claims;
+a useful terminology reference does not automatically support every claim.
+
 ### ④ Index — list with the grade
 
 Put [`templates/REFERENCES.md`](templates/REFERENCES.md) at the project root and fill it
@@ -75,6 +91,11 @@ disappears, so a source is only actually used if a normalization exists.
 # PDF → markdown (layout preserved)
 pdftotext -layout original.pdf - > references/md/name.md
 ```
+
+If Poppler is unavailable, use the PyMuPDF fallback in the
+[platform notes](../../docs/platform-tools.md), preserving page boundaries. On
+Windows PowerShell 5.1, write UTF-8 through an explicit file writer instead of relying
+on shell redirection. This extraction still needs the citation header and the checks below.
 
 ## Attach quantitative verification to every conversion
 

@@ -5,6 +5,17 @@ description: Prepare the next session — review the questions received, the bri
 
 Read the [runtime notes](../../docs/codex-runtime.md) once per task before following this procedure.
 
+Read the recorded project mode and apply the [mode contract](../../docs/project-modes.md).
+Authoring adaptations take precedence over learner-only steps below.
+
+
+Before either mode's preparation, check delivered working copies using
+[direct-edit reconciliation](../textbook-revision/references/direct-edits.md).
+Register changes without automatically applying the queue or publishing.
+
+In authoring mode, prepare the next agreed writing/review milestone from the content
+plan and revision queue. Report pending editorial decisions and prepared material;
+skip the learner-specific sequence below unless a taught session is actually in scope.
 
 This is the preparation the conductor does between sessions. Finish all of it here, so that
 the session time goes only to understanding and diagnosis.
@@ -25,4 +36,4 @@ the session time goes only to understanding and diagnosis.
 
 When preparation is done, report in one paragraph what was prepared.
 
-Use a session number supplied by the learner; otherwise determine the next session from the curriculum and work log.
+In learning mode, use a session number supplied by the learner; otherwise determine the next session from the curriculum and work log. In authoring mode, use the agreed writing/review milestone instead.

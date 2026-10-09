@@ -1,15 +1,19 @@
 ---
 name: textbook-authoring
-description: The procedure for writing a dual-audience textbook (HTML) from the learner profile and the curriculum, and managing its editions. Use it for requests like "make me a textbook", "write the preview material", or "write the next chapter". It covers the dual-audience technique of isolating fundamentals into groundwork boxes, the standard skeleton of a chapter, the prose style rules, designing interactive figures so they become still frames in print, edition labelling, and the finished textbook template.
+description: The procedure for writing a dual-audience textbook (HTML) from the learner profile and the curriculum, and managing its editions. Use it for requests like "make me a textbook", "write the preview material", or "write the next chapter". It covers the dual-audience technique of isolating fundamentals into groundwork boxes, the standard skeleton of a chapter, the prose style rules, designing interactive figures so they become still frames in print, edition records, and the finished textbook template.
 ---
 
 Read the [runtime notes](../../docs/codex-runtime.md) once per task before following this procedure.
 
+Read the recorded project mode and apply the [mode contract](../../docs/project-modes.md).
+Authoring adaptations take precedence over learner-only steps below.
+
 
 # Textbook authoring — writing for two audiences
 
-The textbook consists of chapters corresponding to the sessions of the curriculum. One
-session is one chapter. Before starting, read `docs/learner-profile.md` and
+In learning mode, chapters correspond to curriculum sessions: one session is one
+chapter. In authoring mode, chapters follow the agreed reader-oriented content plan;
+a personal study-session schedule is not required. Before starting, read `docs/learner-profile.md` and
 `docs/curriculum.md`. **Subject, boundary, depth, and style all come from those two
 documents.**
 
@@ -22,7 +26,7 @@ fundamentals makes it padding for the learner. The solution is **isolation**.
 - Fundamentals the learner already knows are pulled out of the body into a **"groundwork"
   box** (`aside.basics`). The learner skips it; a first-time reader reads it. The same
   textbook satisfies two audiences.
-- Fundamentals that remain after all that gathering go into a **chapter 0, "Preparations"**.
+- Fundamentals that remain after all that gathering go into a **preparatory chapter, "Preparations"**.
   State explicitly that this chapter may be skipped.
 - Write the body as **self-standing prose.** Do not presume a particular learner or the
   internal circumstances of a particular project. Sentences like "this is your specialty so
@@ -39,16 +43,16 @@ form. One chapter goes in this order.
 1. **Head** — the chapter number (which session) and the title.
 2. **Opening paragraph** — why this chapter's question became necessary now. Join it to the
    previous chapter in prose.
-3. **Sections (h3)** — write section titles as **assertions**, not nouns ("How the same data
-   is held decides how fast the answer comes"). Reading only the titles should carry the
-   argument.
+3. **Sections (h3, then h4)** — use concise title phrases and hierarchical numbers
+   such as `1.`, `1.1.`, `1.1.1.`, with one space before the title. Keep document
+   numbering separate from session numbering; do not use sentence-form headings.
 4. **Groundwork boxes** — wherever needed.
 5. **Figures** — see the "Visuals" section below.
 6. **Three key sentences** (`.keybox`) — exactly one per chapter. Write them as **complete
    sentences.** Ending on a noun phrase ("the understanding of ~", "the importance of ~")
    makes a table of contents, not a summary.
 7. **Review questions** (`details`) — three. Answers go in `.ans`. This collapsing structure
-   is itself the principle behind issuing two editions
+   supports exercise and answer variants for PDF; DOCX uses explicit content filtering
    ([`textbook-publish`](../textbook-publish/SKILL.md)).
 
 Make the review questions **demand a judgment**, not confirm knowledge. Designing them can
@@ -70,6 +74,25 @@ them before writing. The core, transcribed:
   that equation describes, in prose.
 - Do not write translationese. Where a settled term exists in the target language, use it and
   give the original alongside on first appearance.
+
+## Terminology sources
+
+For technical terminology, usage, and customary expressions, consult the original
+source collection's textbooks and professional institutions' handbooks/guidebooks
+first. Follow the [terminology rules](references/style-rules.md), record source
+locations and selected conventions in the project glossary/style guide, and use them
+consistently. General language editing must preserve those disciplinary conventions.
+
+## Document layout
+
+Apply the heading, caption, spacing, and table-label rules in
+[style rules](references/style-rules.md). Put figure numbers/captions below figures,
+table numbers/captions above tables, and one body-text line of space between the
+complete object/caption block and surrounding prose. Prefix header cells `(A) `,
+`(B) `, etc.; prefix first-column data cells `(1) `, `(2) `, etc., excluding the
+header row. Keep labels as real text and verify the converted output.
+Number standalone display equations only, with `(1)`, `(2)`, etc. at the far right
+of the equation row. Inline mathematics remains unnumbered.
 
 ## Visuals
 
@@ -94,16 +117,18 @@ distinction first.
 
 ## Managing editions
 
-- The textbook carries an **edition label** from the start (`.pill` in the head). Raise it
-  with every correction.
+- Keep edition identifiers and publication dates in the edition directory name and
+  README, not in the textbook body or footer. A correction becomes a new edition
+  at the recorded publication trigger, not at every conversational question.
 - Gather pending revisions in the document belonging to
   [`textbook-revision`](../textbook-revision/SKILL.md), and when issuing a new edition, open
   that document first and fold in every waiting item.
-- The master file is fixed at `docs/textbook.html`. Published editions (PDF and so on) derive
-  from it.
-- Do not delete the revision notice in the footer — it is where the learner learns when and
-  how the next edition arrives and where to leave a question, and that is what brings them
-  into the loop.
+- The default master is `docs/textbook.html`. Published editions derive from the
+  reconciled authoritative source recorded in the project; see Source authority below.
+- Keep a stable feedback notice in the footer: where to leave a question and how to
+  obtain updates. Put edition-specific coverage and changes in the edition README.
+- Follow the immutable output directory and selected-format rules in
+  [`textbook-publish`](../textbook-publish/SKILL.md).
 
 ## Writing the whole thing up front versus incrementally
 
@@ -115,7 +140,24 @@ eight revision items before the study had even begun.
 That said, practice results and review items can only be written after a session, so leave
 their place empty in each chapter and fill them in the revised edition after the session.
 
+## Source authority and editorial checks
+
+HTML at `docs/textbook.html` is the default master. Before using an existing project,
+read its source-authority contract and reconcile user edits through
+[direct-edit reconciliation](../textbook-revision/references/direct-edits.md). If the
+user has designated another format as authoritative, work from it and record the
+limits of HTML conversion instead of overwriting it from a stale HTML copy.
+
+Follow the [claim verification rules](../../docs/evidence-verification.md) when
+writing or rewriting factual sentences. Use [safe renumbering](../textbook-revision/references/renumbering.md)
+when target numbers or order change.
+
 ## After writing
+
+Run the project's [language-editing policy](references/language-editing.md) when due:
+content corrections first, prose editing next, textbook audit last. Recheck factual
+rewrites and any content changes made after this pass.
+
 
 Check for violations of the conventions, the style, and self-standing prose with the
 [`textbook-auditor`](../textbook-auditor/SKILL.md) agent. Clause-by-clause collation is

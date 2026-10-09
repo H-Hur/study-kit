@@ -6,6 +6,9 @@ tools: Read, Grep, Glob, Bash, Write
 
 Read the [runtime notes](../docs/runtime.md) once per task before following this procedure.
 
+Read the [mode contract](../docs/project-modes.md) and use the intended reader
+profile in authoring mode. Do not classify author/editor remarks as learner evidence.
+
 
 # The comprehension auditor — finding what was not understood from what was asked back
 

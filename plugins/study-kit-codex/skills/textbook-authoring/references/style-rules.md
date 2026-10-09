@@ -16,13 +16,60 @@ why the concept became necessary, how it joins what came before, and what it lea
 - Use tables and lists **only to summarize what has already been explained.**
 - If a section consists of two lists, that section has not been written yet.
 
-## 2. Section titles as assertions
+## 2. Title-style headings and hierarchical numbering
 
-A noun-phrase title ("Data structures", "Performance comparison") is the language of a table
-of contents. Write an assertion so that skimming the titles carries the argument ("How the
-same data is held decides how fast the answer comes"). The chapter's "three key sentences"
-must be **complete sentences** for the same reason — ending on a noun phrase makes a table of
-contents, not a summary.
+Use concise title phrases, not full-sentence assertions, for document and section
+headings: "Data structures" or "Performance comparison", not "How the same data is
+held decides how fast the answer comes". This changes headings, not the requirement
+for explanatory body prose or the chapter's three complete key sentences.
+
+Number content headings by hierarchy: `1. Title`, `1.1. Subtitle`,
+`1.1.1. Subsection`, `1.1.2. Subsection`, `1.2. Subtitle`, `1.2.1. Subsection`.
+Use a trailing period and one space before the title. Restart subordinate counters
+under each parent; do not skip a parent level. The document's cover title is unnumbered.
+Heading numbers express document structure; record session numbers separately rather
+than forcing preparatory material or front matter to have chapter number zero.
+
+## Document layout rules (2026-10-09)
+
+Apply these rules to HTML, PDF, DOCX, and other document outputs. Preserve them through
+conversion; do not assume HTML CSS alone determines the final Word layout.
+
+- **Figure number and caption below the figure.** Keep the number and caption together
+  and associated with their figure, including across page breaks.
+- **Table number and caption above the table.** In HTML, put `caption` before `colgroup`
+  and row groups; in Word, place the caption paragraph before the table and keep it
+  with the first table row.
+- **One body-text line of space** between surrounding prose and each figure/table
+  block, including its caption, on both sides where adjacent prose exists. Apply this
+  outside the complete block, not between its caption and object. Use paragraph/block
+  spacing equal to the configured body line height; avoid accumulated blank paragraphs
+  or doubled spacing. Check the rendered result, especially at page boundaries.
+- **Column labels in the header row**: prefix the existing header text left to right
+  with `(A) `, `(B) `, `(C) `, continuing `(Z) `, `(AA) ` if needed.
+- **Row labels in the leftmost cells**: prefix existing first-column content with
+  `(1) `, `(2) `, `(3) ` starting at the second physical row (the first data row).
+  Exclude the header row from row numbering. Do not add a separate index column by
+  default. After every closing parenthesis, write exactly one ordinary space before
+  the cell text. Restart row and column labels in each table; repeated headers on
+  later pages retain their column labels and do not advance row numbering.
+
+For merged or multirow headers, normalize to a single clearly labeled header row when
+that preserves meaning. If it does not, determine the logical row/column mapping and
+record the necessary exception rather than silently duplicating labels or changing
+meaning. Row-spanning data cells need a layout that gives every data row its own label.
+Materialize labels as text so export cannot lose CSS-generated numbering. Avoid duplicate
+prefixes when editing an already numbered table. Structural edits require rechecking
+all row/column labels and references to them.
+
+Example (the caption appears above this table):
+
+Table 1. Comparison
+
+| (A) Item | (B) Description | (C) Result |
+|---|---|---|
+| (1) First item | Description | Result |
+| (2) Second item | Description | Result |
 
 ## 3. Do not write translationese
 
@@ -34,6 +81,28 @@ for terms that have no settled translation.
 Signs of translationese to watch for, in any language: passive constructions where the actor
 is known, nominalized verbs where a verb would do, "it is possible to X" for "X can", and
 chains of prepositional phrases that a single clause would carry.
+
+### Technical terminology and disciplinary usage
+
+When writing the textbook, first consult the original source material's textbooks
+and handbooks/guidebooks issued by professional institutions for technical terms,
+their meanings, customary phrasing, and usage conventions. Prefer relevant passages
+in those originals over general dictionaries, generic prose advice, or model recall.
+Use sources appropriate to the subject, intended audience, document language, and
+edition; do not assume a newer or similarly named source uses the same convention.
+
+Record selected terms, definitions, customary expressions, and source locations in
+the project glossary or style guide. Apply them consistently in headings, body text,
+figures, tables, and captions. If authoritative sources differ, record the distinction
+and choose the convention that fits the subject and reader context; do not silently
+merge different meanings. If the preferred sources are unavailable, use another
+verified primary source and identify the unresolved convention rather than invent it.
+
+A project-specific terminology decision takes precedence when explicitly given. Flag
+conflicts with source usage for resolution. Generic grammar/style suggestions must not
+replace an established technical expression merely because an everyday alternative
+sounds simpler. This priority concerns terminology and expression conventions; factual
+claims still require their own appropriate source verification.
 
 ## 4. Do not let punctuation stand in for sentences
 
@@ -63,6 +132,19 @@ paragraph mean sentences have been left unfinished. Convert as follows.
 There is one test: is this metaphor used again later, and was its meaning defined somewhere?
 
 ## 7. Equations and symbols
+
+- Number standalone display equations only. Inline mathematics within a sentence or
+  paragraph has no equation number. Number displays in document order `(1)`, `(2)`,
+  etc., independently of headings, figures, and tables, unless the project specifies
+  another sequence. Put the parenthesized number at the far right of the display's
+  text area, on the same equation row, not immediately after the formula or on a
+  separate line. Keep it with its equation across page breaks.
+- Keep numbers as real text or native fields, not CSS-only generated content. Check
+  alignment and reference targets after conversion, insertion, or deletion. A multiline
+  display treated as one equation receives one number; distinct displayed equations
+  receive their own numbers. Explain symbols in the following prose, outside the
+  equation row, so commentary does not displace the right-aligned number.
+
 
 - If the depth contract says "as far as the concept," **do not put in derivations.** Give the
   result in one line, the meaning of the symbols, and the picture the equation describes, in
@@ -97,3 +179,11 @@ sed -n '/<main>/,$p' textbook.html | grep -o '#[0-9A-Fa-f]\{6\}' | wc -l   # har
 
 Clauses that counting cannot catch (1, 2, 6, 8) go to the
 [`textbook-auditor`](../../textbook-auditor/SKILL.md) agent.
+
+## Applying a language-editing pass
+
+Use the project's recorded [editing policy](language-editing.md). Apply content fixes
+before prose editing, then audit. The project guide and terminology govern suggestions;
+check adjacent tables and captions for definitions. Do not strengthen factual claims
+or discard qualifications to make sentences smoother. Recheck rewritten claims against
+their sources, including unchanged claims in those sentences.

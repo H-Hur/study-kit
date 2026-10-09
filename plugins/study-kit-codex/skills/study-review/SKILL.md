@@ -5,8 +5,16 @@ description: Audit comprehension — find concepts not understood from what was 
 
 Read the [runtime notes](../../docs/codex-runtime.md) once per task before following this procedure.
 
+Read the recorded project mode and apply the [mode contract](../../docs/project-modes.md).
+Authoring adaptations take precedence over learner-only steps below.
 
-Call the [`comprehension-auditor`](../comprehension-auditor/SKILL.md) agent to find what the learner asked back about in recent
+
+In authoring mode, use the [`textbook-auditor`](../textbook-auditor/SKILL.md) to review the manuscript and register
+actionable editorial findings in the revision queue. Do not run the comprehension
+sequence below on author remarks. Actual reader-evidence review requires an explicit
+request and identified evidence subjects, as described in the mode contract.
+
+In learning mode, call the [`comprehension-auditor`](../comprehension-auditor/SKILL.md) agent to find what the learner asked back about in recent
 conversation records, study notes, and material recovered from the secondary track, and take
 back a report of the concepts judged not understood along with proposed re-explanations.
 

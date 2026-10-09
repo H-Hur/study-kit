@@ -145,10 +145,12 @@ sentence in the textbook produced this misunderstanding" and write the corrected
 into the pending-revisions document. With the wording written, the revision work ends in
 assembly alone; without it, the question disappears.
 
-Manage the textbook by edition and automate distribution. Since folding and unfolding the
-answers to the review questions is all it takes to get two editions, exercise and answer,
-issue both from the same master to match the learner's circumstances (questions only in
-scraps of time, answers included in a focused sitting).
+Manage revisions through the queue and the project's recorded publication trigger.
+Issue the selected PDF and/or DOCX formats into a new immutable edition directory,
+with changes and verification in its README. Exercise and answer variants derive
+from the same master to match the learner's circumstances (questions only in scraps
+of time, answers included in a focused sitting). PDF uses folded/expanded answer
+copies; DOCX requires explicit answer removal or inclusion before conversion.
 
 Procedure: the [`textbook-authoring`](../skills/textbook-authoring/SKILL.md) · [`textbook-revision`](../skills/textbook-revision/SKILL.md) · [`textbook-publish`](../skills/textbook-publish/SKILL.md) skills,
 the [`textbook-auditor`](../agents/textbook-auditor.md) · [`comprehension-auditor`](../agents/comprehension-auditor.md) agents.
@@ -199,3 +201,11 @@ straight through to a textbook revision holds only on the side that has the cont
 - **The recipient decides the channel.** Test "does it open without a login" first.
 - **Record tool use.** Note it whenever a new tool is used or an effect or trap is
   established. This kit itself came out of records like that.
+
+
+## Project modes — 2026-10-09
+
+The [mode contract](project-modes.md) separates learning for oneself from authoring
+for other readers within this plugin. Its authoring adaptations take precedence over
+personal-study assumptions in this method. Production procedures remain shared;
+author remarks are editorial input, not evidence of reader comprehension.

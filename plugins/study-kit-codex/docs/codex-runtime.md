@@ -143,10 +143,11 @@ or invent learner quotations. A file-only review must identify its narrower scop
 
 The plugin bundles instructions and templates, not a browser, PDF converter,
 messenger account, or scheduler. The local PDF examples require a Chrome-compatible
-browser and Poppler (`pdftotext` and `pdfinfo`); locate actual executables and follow
+browser and Poppler (`pdftotext` and `pdfinfo`) or PyMuPDF; locate actual executables and follow
 the active host's tool policy before using them. Prefer an available host PDF
-workflow when it preserves exercise/answer separation and verification. If no
-converter is available, return the HTML master and state that PDFs were not made.
+workflow when it preserves exercise/answer separation and verification. If a required
+converter is unavailable, return the source/draft and state which outputs or checks
+could not be completed.
 
 The token counts in the budget and source-index notes are historical Claude Code
 estimates, not Codex benchmarks or limits. Use the current-work rules and actual
@@ -171,3 +172,22 @@ Updated 2026-09-06 against official [model guidance](https://learn.chatgpt.com/d
 and [plugin structure](https://developers.openai.com/plugins/build/plugins).
 These are execution adaptations. Package checks establish file structure and
 handoff contracts, not the quality or successful execution of a complete course.
+
+## Conversation and document languages
+
+Read the language contract in the study project's instructions/profile. If the user
+specified separate languages, use the conversation language for questions, reports,
+and short status messages, and the document language only for the relevant artifact.
+English kit instructions or an English file do not change the conversation language.
+If no split was requested, retain the single language entry; do not add an intake question.
+Feedback reported language drift in both hosts despite recorded preferences (#2).
+
+## Conversion environments
+
+Before conversion or source extraction, read the [platform notes](platform-tools.md).
+They cover Windows PowerShell 5.1, explicit UTF-8, PyMuPDF when Poppler is absent,
+DOCX ZIP/XML inspection without optional libraries, and bounded Word COM execution.
+Use the project's chosen PDF/DOCX formats; a missing PDF tool does not block DOCX-only
+work when its own conversion and verification tools are available.
+
+Feedback update — 2026-10-09 (#2, #6, #9).

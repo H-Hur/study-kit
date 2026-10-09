@@ -1,5 +1,11 @@
 # study-kit — a study support bundle
 
+Use **learning mode** for your own study or **authoring mode** to write for other
+readers. The same source, textbook, revision, and publication procedures serve both;
+authoring keeps the instructor and learner levels separate. At startup, choose personal
+learning or teaching. Teaching then asks whether to work within the instructor's
+knowledge or include a bounded researched extension, while matching the learners' level.
+
 **Build a textbook around what you already know, then revise it from the questions
 you ask while studying.**
 
@@ -152,7 +158,7 @@ session) carries these out directly.
 | `curriculum-design` | Works backward from the target capability to sessions, planting a diagnostic drill in each |
 | `textbook-authoring` | Writes the dual-audience textbook and manages its editions |
 | `textbook-revision` | Turns the learner's questions into drafted revisions and stacks them |
-| `textbook-publish` | Produces two PDF editions, exercise and answer |
+| `textbook-publish` | Publishes PDF and/or DOCX, with exercise and answer variants |
 
 **Specialist roles** — Claude Code agents and Codex skills. These handle work with a
 lot to read where only the conclusion is needed. In Codex, each specialist skill
