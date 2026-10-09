@@ -15,5 +15,6 @@
     "Revise my textbook and prepare the selected PDF or DOCX editions."
   ],
   "composerIcon": "./assets/study-kit.svg",
-  "logo": "./assets/study-kit.svg"
+  "logo": "./assets/study-kit.svg",
+  "privacyPolicyURL": "https://github.com/H-Hur/study-kit/blob/main/docs/privacy.md"
 }

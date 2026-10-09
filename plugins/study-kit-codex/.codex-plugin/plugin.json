@@ -1,6 +1,6 @@
 {
   "name": "study-kit-codex",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Self-study and textbook authoring with verified sources, focused curricula, revision workflows, and PDF/DOCX publication. Choose personal learning or teaching material creation. Includes 14 Codex skills.",
   "author": {
     "name": "Hyeonoh Hur"
@@ -35,6 +35,7 @@
       "Revise my textbook and prepare the selected PDF or DOCX editions."
     ],
     "composerIcon": "./assets/study-kit.svg",
-    "logo": "./assets/study-kit.svg"
+    "logo": "./assets/study-kit.svg",
+    "privacyPolicyURL": "https://github.com/H-Hur/study-kit/blob/main/docs/privacy.md"
   }
 }

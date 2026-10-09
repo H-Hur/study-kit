@@ -279,3 +279,10 @@ Codex listing includes a square SVG icon and a short description under 30 charac
 The README and first-use guide no longer advertise an unavailable demo. See the
 [international distribution notes](international-distribution.md) for submission copy
 and the distinction between repository releases and directory approval.
+
+## Version 2.1.2 — directory privacy metadata (2026-10-09)
+
+The OpenAI draft check requested an accessible privacy policy. The listing now
+links to a factual [privacy notice](privacy.md) covering project files, host processing,
+optional external tools, retention controls, and voluntary GitHub feedback.
+This release does not add telemetry or a service backend.
